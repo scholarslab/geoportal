@@ -1,0 +1,5 @@
+rvm use 1.9.3@geoportal --create
+
+git pull
+
+bundle install

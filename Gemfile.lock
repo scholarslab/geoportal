@@ -1,0 +1,113 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.1.0)
+    capybara (2.0.2)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0)
+      xpath (~> 1.0.0)
+    childprocess (0.3.7)
+      ffi (~> 1.0, >= 1.0.6)
+    chunky_png (1.2.7)
+    coderay (1.0.8)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    daemons (1.1.9)
+    diff-lcs (1.1.3)
+    em-websocket (0.4.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
+    eventmachine (1.0.0)
+    ffi (1.3.1)
+    foreman (0.61.0)
+      thor (>= 0.13.6)
+    fssm (0.2.9)
+    guard (1.6.1)
+      listen (>= 0.6.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-bundler (1.0.0)
+      bundler (~> 1.0)
+      guard (~> 1.1)
+    guard-livereload (1.1.3)
+      em-websocket (>= 0.2.0)
+      guard (>= 1.5.0)
+      multi_json (~> 1.0)
+    guard-rspec (2.4.0)
+      guard (>= 1.1)
+      rspec (~> 2.11)
+    http_parser.rb (0.5.3)
+    listen (0.7.2)
+    lumberjack (1.0.2)
+    method_source (0.8.1)
+    mime-types (1.19)
+    multi_json (1.5.0)
+    nokogiri (1.5.6)
+    pry (0.9.11.4)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    rack (1.5.0)
+    rack-protection (1.3.2)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rb-fsevent (0.9.3)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.1)
+    rubyzip (0.9.9)
+    sass (3.2.5)
+    selenium-webdriver (2.29.0)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip
+      websocket (~> 1.0.4)
+    shotgun (0.9)
+      rack (>= 1.0)
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    slop (3.4.3)
+    susy (1.0.5)
+      compass (>= 0.12.2)
+      sass (>= 3.2.0)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thor (0.17.0)
+    tilt (1.3.3)
+    websocket (1.0.6)
+    xpath (1.0.0)
+      nokogiri (~> 1.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  capybara
+  foreman
+  guard
+  guard-bundler
+  guard-livereload
+  guard-rspec
+  rb-fsevent
+  rspec
+  shotgun
+  sinatra
+  susy
+  thin
