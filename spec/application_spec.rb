@@ -13,6 +13,13 @@ describe 'The Geoportal App' do
     end
   end
 
+  describe "GET '/results'" do
+    it "should be successful" do
+      get '/search'
+      last_response.should be_ok
+    end
+  end
+
  end
 
 describe Geoportal::Request do
