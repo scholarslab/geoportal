@@ -20,6 +20,8 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'rb-fsevent', :require => false
+  gem 'growl', :require => false
+  gem 'terminal-notifier', :require => false
 end
 
 group :development, :test do

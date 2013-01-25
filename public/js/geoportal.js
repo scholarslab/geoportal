@@ -1388,31 +1388,6 @@ c);b.matrixIds.push(c)},ScaleDenominator:function(a,b){b.scaleDenominator=parseF
 MatrixWidth:function(a,b){b.matrixWidth=parseInt(this.getChildValue(a))},MatrixHeight:function(a,b){b.matrixHeight=parseInt(this.getChildValue(a))},ResourceURL:function(a,b){b.resourceUrl=b.resourceUrl||{};b.resourceUrl[a.getAttribute("resourceType")]={format:a.getAttribute("format"),template:a.getAttribute("template")}},WSDL:function(a,b){b.wsdl={};b.wsdl.href=a.getAttribute("xlink:href")},ServiceMetadataURL:function(a,b){b.serviceMetadataUrl={};b.serviceMetadataUrl.href=a.getAttribute("xlink:href")},
 LegendURL:function(a,b){b.legend={};b.legend.href=a.getAttribute("xlink:href");b.legend.format=a.getAttribute("format")},Dimension:function(a,b){var c={values:[]};this.readChildNodes(a,c);b.dimensions.push(c)},Default:function(a,b){b["default"]=this.getChildValue(a)},Value:function(a,b){b.values.push(this.getChildValue(a))}},ows:OpenLayers.Format.OWSCommon.v1_1_0.prototype.readers.ows},CLASS_NAME:"OpenLayers.Format.WMTSCapabilities.v1_0_0"});
 
-// Avoid `console` errors in browsers that lack a console.
-(function() {
-    var method;
-    var noop = function () {};
-    var methods = [
-        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-        'timeStamp', 'trace', 'warn'
-    ];
-    var length = methods.length;
-    var console = (window.console = window.console || {});
-
-    while (length--) {
-        method = methods[length];
-
-        // Only stub undefined methods.
-        if (!console[method]) {
-            console[method] = noop;
-        }
-    }
-}());
-
-// Place any jQuery/helper plugins in here.
-
 var Geoportal = Geoportal || {};
 var OpenLayers = OpenLayers || {};
 var google = google || {};
@@ -1469,3 +1444,28 @@ Geoportal.map = (function() {
 
 
 })(Geoportal);
+
+// Avoid `console` errors in browsers that lack a console.
+(function() {
+    var method;
+    var noop = function () {};
+    var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+        'timeStamp', 'trace', 'warn'
+    ];
+    var length = methods.length;
+    var console = (window.console = window.console || {});
+
+    while (length--) {
+        method = methods[length];
+
+        // Only stub undefined methods.
+        if (!console[method]) {
+            console[method] = noop;
+        }
+    }
+}());
+
+// Place any jQuery/helper plugins in here.

@@ -27,6 +27,7 @@ GEM
     foreman (0.61.0)
       thor (>= 0.13.6)
     fssm (0.2.9)
+    growl (1.0.3)
     guard (1.6.1)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -85,6 +86,7 @@ GEM
     susy (1.0.5)
       compass (>= 0.12.2)
       sass (>= 3.2.0)
+    terminal-notifier (1.4.2)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -102,6 +104,7 @@ DEPENDENCIES
   awesome_print
   capybara
   foreman
+  growl
   guard
   guard-bundler
   guard-livereload
@@ -114,4 +117,5 @@ DEPENDENCIES
   shotgun
   sinatra
   susy
+  terminal-notifier
   thin

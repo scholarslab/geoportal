@@ -11,6 +11,7 @@ describe 'The Geoportal App' do
       get '/'
       last_response.should be_ok
     end
+
   end
 
   describe "GET '/results'" do

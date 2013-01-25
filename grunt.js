@@ -1,10 +1,15 @@
 module.exports = function(grunt) {
+  'use strict';
+
   grunt.loadNpmTasks('grunt-contrib');
 
   // project configuration
   grunt.initConfig({
     pkg: '<json:package.json>',
     meta: {
+      src: 'src/**/*.js',
+      dest: 'public/js/',
+      specs: 'spec/**/*Spec.js',
       banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("m/d/yyyy") %>\n' +
         '* <%= pkg.homepage %>\n' +
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
@@ -14,36 +19,48 @@ module.exports = function(grunt) {
       files: ['test/**/*.js']
     },
     watch: {
-      files: ['grunt.js', '<config:lint.files>'],
-      tasks: ['lint','test','concat', 'min']
+      files: ['Gruntfile.js', '<config:lint.files>'],
+      //tasks: ['lint','test','concat', 'min'],
+      test: {
+        files: ['<%= meta.src %>', '<%= meta.specs %>'],
+        tasks: 'test'
+      }
     },
     concat: {
       dist: {
         src: [
           '<banner>',
-          'public/js/vendor/OpenLayers.js',
-          'src/plugins.js',
-          'src/geoportal.js'
+          '<%= meta.dest %>/vendor/OpenLayers.js',
+          '<%= meta.src %>'
+          //'src/plugins.js',
+          //'src/geoportal.js'
         ],
         dest: 'public/js/<%= pkg.name %>.js'
       }
     },
     min: {
       dist: {
-        src: ['<banner>', 'public/js/<%= pkg.name %>.js'],
-        dest: 'public/js/<%= pkg.name %>.min.js'
+        src: ['<banner>', '<%= meta.dest %><%= pkg.name %>.js'],
+        dest: '<%= meta.dest %><%= pkg.name %>.min.js'
       }
     },
     uglify: {
-      //mangle: {toplevel: false},
-      //squeeze: {dead_code: false},
-      //codegen: {quote_keys: true}
-      //sourceMap: 'public/js/source-map.js'
+      mangle: {toplevel: false},
+      squeeze: {dead_code: false},
+      codegen: {quote_keys: true},
+      options: {
+        sourceMap: 'public/js/source-map.js'
+      }
     },
     lint: {
-      files: ['src/**/*.js', 'test/**/*.js']
+      files: ['<%= meta.src %>', '<%= meta.specs %>']
     },
     jshint: {
+      all: [
+        'Gruntfile.js',
+        '<%= meta.src %>',
+        '<%= meta.specs %>'
+      ],
       options: {
         curly: true,
         eqeqeq: true,
@@ -57,10 +74,34 @@ module.exports = function(grunt) {
         browser: true
       },
       globals: {
-        jQuery: true
+        jQuery: true,
+        jasmine : false,
+        describe : false,
+        beforeEach : false,
+        expect : false,
+        it : false,
+        spyOn : false
       }
     }
+    //jasmine: {
+      //src: 'src/**/*.js',
+      //options: {
+        //specs: '<%= meta.specs %>'
+      //}
+    //}
+    //'jasmine-server': {
+      //browser: false
+    //}
   });
 
-  grunt.registerTask('default', 'lint test concat min');
+  //grunt.loadNpmTasks('grunt-jasmine-runner');
+  //grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  // override qunit tests
+  //grunt.registerTask('test', ['jshint', 'jasmine']);
+
+  grunt.registerTask('default', 'lint concat min');
+  //grunt.registerTask('default', 'jasmine concat min');
 };
