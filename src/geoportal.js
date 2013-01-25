@@ -3,7 +3,7 @@ var OpenLayers = OpenLayers || {};
 var google = google || {};
 
 Geoportal.map = (function() {
-  "use strict"
+  "use strict";
 
   OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
   OpenLayers.Util.onImageLoadErrorColor = "transparent";

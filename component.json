@@ -1,0 +1,6 @@
+{
+  "name": "geoportal",
+  "dependencies" : {
+    "ember": "components/ember/index.js"
+  }
+}

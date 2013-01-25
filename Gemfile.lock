@@ -106,6 +106,7 @@ DEPENDENCIES
   guard-bundler
   guard-livereload
   guard-rspec
+  rack
   rack-test
   rake
   rb-fsevent

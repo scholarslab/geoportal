@@ -1,9 +1,14 @@
 # A sample Gemfile
 source "https://rubygems.org"
+ruby "1.9.3"
 
 gem "sinatra"
 gem "foreman"
-gem "thin"
+
+group :rackup do
+  gem "rack"
+  gem "thin"
+end
 
 group :development do
   gem "shotgun"
