@@ -17,6 +17,10 @@ group :development do
   gem 'rb-fsevent', :require => false
 end
 
+group :development, :test do
+  gem "rake"
+end
+
 group :test do
   gem 'rspec'
   gem 'capybara'
