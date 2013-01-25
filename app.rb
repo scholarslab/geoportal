@@ -15,3 +15,7 @@ end
 get '/' do
   erb :index
 end
+
+get '/search?' do
+  erb :results
+end

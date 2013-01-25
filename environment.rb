@@ -4,6 +4,7 @@ require 'sinatra' unless defined?(Sinatra)
 configure do
   SiteConfig = OpenStruct.new(
     :title => 'UVA Library Geoportal',
+    :description => '',
     :geonetwork_url => 'http://libsvr35.lib.virginia.edu',
     :geonetwork_port => '8080',
     :library_catalog => 'http://search.lib.virginia.edu/catalog/'
