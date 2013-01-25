@@ -105,6 +105,7 @@ DEPENDENCIES
   guard-bundler
   guard-livereload
   guard-rspec
+  rack-test
   rb-fsevent
   rspec
   shotgun
