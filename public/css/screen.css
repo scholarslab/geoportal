@@ -30,3 +30,32 @@
   display: table;
   clear: both;
 }
+
+/* line 14, ../../_sass/screen.scss */
+#map {
+  width: 700px;
+  height: 568px;
+}
+/* line 18, ../../_sass/screen.scss */
+#map .olControlLayerSwitcher {
+  /*background-color: #3c3b3a;*/
+  background-color: #000;
+  opacity: 0.8;
+  color: white;
+  font-family: sans-serif;
+  font-size: smaller;
+  font-weight: bold;
+  margin-bottom: 3px;
+  margin-left: 3px;
+  margin-top: 3px;
+  position: absolute;
+  right: 0;
+  top: 42px;
+  width: 20em;
+}
+/* line 34, ../../_sass/screen.scss */
+#map .olControlLayerSwitcher .layersDiv {
+  background-color: #000;
+  margin: 1em !important;
+  opacity: 0.8;
+}
