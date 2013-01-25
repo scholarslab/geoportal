@@ -14,3 +14,11 @@ describe 'The Geoportal App' do
   end
 
  end
+
+describe Geoportal::Request do
+  before :each do
+    @params = {
+      's' => 1,
+    }
+  end
+end
