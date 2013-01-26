@@ -20,7 +20,6 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['Gruntfile.js', '<config:lint.files>'],
-      //tasks: ['lint','test','concat', 'min'],
       test: {
         files: ['<%= meta.src %>', '<%= meta.specs %>'],
         tasks: 'test'
@@ -32,8 +31,6 @@ module.exports = function(grunt) {
           '<banner>',
           '<%= meta.dest %>/vendor/OpenLayers.js',
           '<%= meta.src %>'
-          //'src/plugins.js',
-          //'src/geoportal.js'
         ],
         dest: 'public/js/<%= pkg.name %>.js'
       }
@@ -83,25 +80,10 @@ module.exports = function(grunt) {
         spyOn : false
       }
     }
-    //jasmine: {
-      //src: 'src/**/*.js',
-      //options: {
-        //specs: '<%= meta.specs %>'
-      //}
-    //}
-    //'jasmine-server': {
-      //browser: false
-    //}
   });
 
-  //grunt.loadNpmTasks('grunt-jasmine-runner');
-  //grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  // override qunit tests
-  //grunt.registerTask('test', ['jshint', 'jasmine']);
-
   grunt.registerTask('default', 'lint concat min');
-  //grunt.registerTask('default', 'jasmine concat min');
 };
