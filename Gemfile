@@ -19,6 +19,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'guard-jasmine'
   gem 'rb-fsevent', :require => false
   gem 'growl', :require => false
   gem 'terminal-notifier', :require => false
@@ -30,6 +31,9 @@ end
 
 group :test do
   gem 'rspec'
+  gem "jasmine"
+  gem "jasmine-headless-webkit"
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'rack-test', :require => "rack/test"
 end
