@@ -16,6 +16,10 @@ get '/' do
   erb :index
 end
 
-get '/search?' do
+get '/items/?' do
   erb :results
+end
+
+get '/items/show/:id' do
+  erb :item
 end

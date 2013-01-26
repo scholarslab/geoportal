@@ -14,9 +14,16 @@ describe 'The Geoportal App' do
 
   end
 
-  describe "GET '/results'" do
+  describe "GET '/items'" do
     it "should be successful" do
-      get '/search'
+      get '/items'
+      last_response.should be_ok
+    end
+  end
+
+  describe "Get '/items/show/:id'" do
+    it "should be successful" do
+      get '/items/show/1'
       last_response.should be_ok
     end
   end
