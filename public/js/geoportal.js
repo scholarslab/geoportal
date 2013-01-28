@@ -1,4 +1,4 @@
-/* geoportal - v0.0.1 - 1/25/2013
+/* geoportal - v0.0.1 - 1/28/2013
 * http://scholarslab.org
 * Copyright (c) 2013 Wayne Graham
 * Licensed Apache 2.0 */
@@ -1391,9 +1391,14 @@ LegendURL:function(a,b){b.legend={};b.legend.href=a.getAttribute("xlink:href");b
 var Geoportal = Geoportal || {};
 var OpenLayers = OpenLayers || {};
 var google = google || {};
+var console = console || {};
 
 Geoportal.map = (function() {
   "use strict";
+
+  var slab = new OpenLayers.LonLat(-8739214.39812,4584593.40392);
+  var control = new OpenLayers.Control();
+  var mrk = new OpenLayers.Layer.Boxes('Bbox marker');
 
   OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
   OpenLayers.Util.onImageLoadErrorColor = "transparent";
@@ -1409,36 +1414,71 @@ Geoportal.map = (function() {
       new OpenLayers.Control.Attribution(),
       new OpenLayers.Control.Navigation(),
       new OpenLayers.Control.PanZoomBar(),
-      new OpenLayers.Control.LayerSwitcher({
-        'ascending': true,
-        roundedCorner: false
-      }),
+      //new OpenLayers.Control.LayerSwitcher({
+      //'ascending': true,
+      //roundedCorner: false
+      //}),
       new OpenLayers.Control.ScaleLine(),
-      new OpenLayers.Control.Permalink({anchor: true}),
-      new OpenLayers.Control.MousePosition(),
-      new OpenLayers.Control.KeyboardDefaults()
+      //new OpenLayers.Control.Permalink({anchor: true}),
+      new OpenLayers.Control.MousePosition()
+      //new OpenLayers.Control.KeyboardDefaults()
     ],
     layers: [
-      new OpenLayers.Layer.OSM(),
-      new OpenLayers.Layer.Google(
-        "Google Physical",
-        {type: google.maps.MapTypeId.TERRAIN}
-      ),
-      new OpenLayers.Layer.Google(
-        "Google Hybrid",
-        {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
-      ),
-      new OpenLayers.Layer.Google(
-        "Google Satellite",
-        {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
-      ),
-      new OpenLayers.Layer.Boxes('BBox marker')
+      new OpenLayers.Layer.OSM()
+      //new OpenLayers.Layer.Google(
+      //"Google Physical",
+      //{type: google.maps.MapTypeId.TERRAIN}
+      //),
+      //new OpenLayers.Layer.Google(
+      //"Google Hybrid",
+      //{type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+      //),
+      //new OpenLayers.Layer.Google(
+      //"Google Satellite",
+      //{type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
+      //),
+      //new OpenLayers.Layer.Boxes('BBox marker')
     ]
-
   });
 
+  // shift+click zoom control
+  OpenLayers.Util.extend(control, {
+    draw: function () {
+      // this Handler.Box will intercept the shift-mousedown
+      // before Control.MouseDefault gets to see it
+      this.box = new OpenLayers.Handler.Box(
+        control,
+        { "done": this.notice },
+        { keyMask: OpenLayers.Handler.MOD_NONE }
+      );
+      this.box.activate();
+    },
+    // Retrieve bbox from vector marker and load in form fields
+    notice: function (bounds) {
+      mrk.clearMarkers();
+      var sw = map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.left, bounds.bottom)); 
+      var ne = map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.right, bounds.top));
+      // Transform Google meters to lat/long
+      var ll = sw.clone();
+      var ur = ne.clone();
+
+      ll.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
+      ur.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
+
+      bounds = new OpenLayers.Bounds(sw.lon, sw.lat, ne.lon, ne.lat);
+
+      console.log(bounds);
+      var box = new OpenLayers.Marker.Box(bounds);
+      mrk.addMarker(box);
+    }
+  });
+
+  map.addControl(control);
+  map.addLayer(mrk);
+
+
   if (!map.getCenter()) {
-    map.setCenter(new OpenLayers.LonLat(-8739214.39812,4584593.40392));
+    map.setCenter(slab);
     map.zoomToMaxExtent();
   }
 
