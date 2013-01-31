@@ -1,6 +1,7 @@
 // ---------------------------------------------------------------------------
 // Imports
-
+@import "compass";
+@import "compass/reset";
 @import "susy";
 
 // ---------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 $total-columns  : 12;
 $column-width   : 4em;
 $gutter-width   : 1em;
-$grid-padding   : $gutter-width;
+$grid-padding   : 0;
 
 $show-grid-backgrounds  : true;
+$container-style: fluid;

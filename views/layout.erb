@@ -9,7 +9,7 @@
   <title><%= @title || SiteConfig.title %></title>
   <meta name="description" content="<%= SiteConfig.description %>">
   <meta name="viewport" content="width=device-width">
-
+<link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,600|Cabin:400,600,400italic" rel="stylesheet">
   <link href="/css/all.css" rel="stylesheet">
   <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -17,11 +17,22 @@
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
-
-<div class="container">
+<header role="banner">
+    <h1><%= SiteConfig.title %></h1>
+</header>
+<div role="main">
   <%= yield %>
 </div>
 
+<footer role="contentinfo">
+    <div id="uvalibrary">
+        <a href="http://www.library.virginia.edu"><img src="/images/uvalibrary-left.png" alt="University of Virginia Library" /></a>
+    </div>
+
+    <div id="scholarslab">
+        <a href="http://scholarslab.org"><img src="http://static.scholarslab.org/images/logos/slab/slab-logo-black-200px.png" alt="Scholars’ Lab"></a>
+    </div>
+</footer>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
 <script src="//maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
