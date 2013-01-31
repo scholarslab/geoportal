@@ -1,6 +1,4 @@
-/* -------------------------------------------------------------------------*/
-/* Layout */
-/* line 9, ../../_sass/screen.scss */
+/* line 7, ../../_sass/all.scss */
 .container {
   *zoom: 1;
   max-width: 59em;
@@ -24,19 +22,19 @@
   -moz-background-clip: content-box;
   background-clip: content-box;
 }
-/* line 38, ../../../../.rvm/gems/ruby-1.9.3-p374@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../.rvm/gems/ruby-1.9.3-p327@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .container:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 14, ../../_sass/screen.scss */
+/* line 12, ../../_sass/all.scss */
 #map {
   width: 700px;
   height: 568px;
 }
-/* line 18, ../../_sass/screen.scss */
+/* line 16, ../../_sass/all.scss */
 #map .olControlLayerSwitcher {
   /*background-color: #3c3b3a;*/
   background-color: #000;
@@ -53,7 +51,7 @@
   top: 42px;
   width: 20em;
 }
-/* line 34, ../../_sass/screen.scss */
+/* line 32, ../../_sass/all.scss */
 #map .olControlLayerSwitcher .layersDiv {
   background-color: #000;
   margin: 1em !important;
