@@ -1,4 +1,18 @@
 <div class="content">
-    <h1>Results</h1>
+  <h1>Results</h1>
 </div>
 <%= erb :_search_form %>
+
+<% if @hits != 0 %>
+  <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
+  returned <span id="hits"><%= @hits %></span> results.</p>
+
+  <p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
+
+<% else %>
+  <p>No results found.</p>
+  <% end %>
+  <hr/>
+  <h3>Doc</h3>
+  <%= @search %>
+
