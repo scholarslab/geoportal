@@ -9,6 +9,7 @@
 
 html {
   background-color: #f3f3f3;
+  border-top: 5px solid #389;
 }
 
 body {
@@ -16,8 +17,10 @@ body {
   color: #444;
   font-family: Cabin, Verdana, sans-serif;
   background: #fff;
-  @include box-shadow(0 0 10px rgba(0,0,0,0.2));
-  margin: 10px;
+  margin: 0 10px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-width: 0 1px 1px;
+  @include box-shadow(0 0 20px rgba(0,0,0,0.2));
 }
 
 a {
@@ -65,20 +68,32 @@ header[role=banner] {
 
 .introduction {
   font-family: "Crimson Text", "Times New Roman", serif;
-  font-style:italic;
   color: #999;
-  @include adjust-font-size-to(14px);
 }
 
 .content {
   padding: 1em;
 }
 
-#search {
-  padding: 1em;
+#search-container {
   background: #fcfcfc;
   border: 1px solid rgba(#333, 0.125);
   border-width: 1px 0 0;
+}
+
+#search {
+  padding: 1em 0 0;
+  fieldset {
+    padding: 1em;
+  }
+
+  legend {
+    color: #555;
+  }
+  .explanation {
+    color: #555;
+    margin: 0.5em 1em;
+  }
 }
 
 #map {
@@ -111,11 +126,14 @@ header[role=banner] {
 
 footer[role=contentinfo] {
   padding:2em;
+  @include clearfix;
+  text-align:center;
 }
 
 #uvalibrary {
   opacity: 0.4;
-
+  width: 225px;
+  margin: 20px auto;
   &:link,
   &:visited {
     opacity:0.4;
@@ -134,8 +152,8 @@ footer[role=contentinfo] {
 }
 
 #scholarslab {
-  width: 125px;
-
+  width: 100px;
+  margin: 20px auto;
   opacity: 0.4;
 
   &:link,
@@ -153,7 +171,6 @@ footer[role=contentinfo] {
   img {
     max-width: 100%;
   }
-
 }
 
 }
@@ -161,46 +178,60 @@ footer[role=contentinfo] {
 @media screen and (min-width: 720px) {
 
 body {
-  margin: 40px;
+  margin: 0 40px;
   position:relative;
 }
 
 header[role=banner] {
-  padding: 80px 40px 0;
+  padding: 100px 2em 20px;
   @include clearfix;
 
   h1 {
-    @include adjust-font-size-to(48px);
-    @include adjust-leading-to(1.25);
+    @include adjust-font-size-to(46px);
+    @include adjust-leading-to(1);
   }
 
 }
 
 .content {
-  padding: 20px 40px;
+  padding: 20px 2em;
+}
+
+#search {
+  fieldset {
+    padding: 1em 2em;
+  }
+
+  .explanation {
+    margin-left:2em;
+    margin-right: 2em;
+  }
 }
 
 .introduction {
-  @include adjust-font-size-to(16px);
+  @include adjust-font-size-to(18px);
 }
 
 footer[role="contentinfo"] {
   position:absolute;
-  top: 40px;
+  top: 20px;
   left:0;
   padding:0;
   width: 100%;
 
 }
 
+#uvalibrary,
+#scholarslab {
+  margin: 0;
+}
+
 #uvalibrary {
-  width: 250px;
   float:left;
 }
 
 #scholarslab {
   float:right;
-  width: 125px;
   margin-right: 30px;
 }
 }
