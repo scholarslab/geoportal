@@ -3,6 +3,32 @@ require 'open-uri'
 
 module Geoportal
 
+    # This class stores the connection information
+  class Server
+
+    attr_reader :config
+
+    def initialize(options = {})
+      @config = options
+    end
+
+    def to_s
+      "Connection: #{@config.inspect}"
+    end
+
+  end
+
+
+  def self.connect(*args)
+    Server.new(*args)
+  end
+
+  def self.server
+    @connection ||= self.connect
+  end
+
+  
+
   class Search
 
     attr_accessor :start, :end, :count, :hits, :query, :search_str, :url

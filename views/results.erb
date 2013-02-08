@@ -5,14 +5,26 @@
 
 <% if @hits != 0 %>
   <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
-  returned <span id="hits"><%= @hits %></span> results.</p>
+returned <span id="hits"><%= @hits %></span> results.</p>
 
-  <p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
+<p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
 
 <% else %>
   <p>No results found.</p>
   <% end %>
-  <hr/>
-  <h3>Doc</h3>
-  <%= @search %>
-
+<hr/>
+<h3>Doc</h3>
+<div id="search_results">
+  <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
+    <% @item_id = item.xpath('.//id').first.content %>
+    <%# @meta = get_item(@meta_url + @item_id) %>
+    <%# @meta.extend Geoportal::Result %>
+    <p>Meta: <%= @hits %></p>
+    <p>Item ID: <%= @item_id %></p>
+    <p>
+      <a href="/items/<%= @item_id %>"><%#= @meta.title %></a>
+      <span class="description"><%#= @meta.description %></span>
+    </p>
+  </div>
+<% end %>
+</div>

@@ -46,6 +46,14 @@ get '/' do
   erb :index
 end
 
+get '/about/?' do
+  erb :about
+end
+
+get '/help/?' do
+  erb :help
+end
+
 get '/items/?' do
   @page_title = "Search Results"
   @search = Geoportal::Search.new(params, gn_url)
