@@ -3,9 +3,9 @@
 </div>
 <%= erb :_search_form %>
 
-<% if @hits != 0 %>
+<% if @search.hits != 0 %>
   <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
-returned <span id="hits"><%= @hits %></span> results.</p>
+returned <span id="hits"><%= @search.hits %></span> results.</p>
 
 <p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
 
@@ -17,14 +17,21 @@ returned <span id="hits"><%= @hits %></span> results.</p>
 <div id="search_results">
   <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
     <% @item_id = item.xpath('.//id').first.content %>
-    <%# @meta = get_item(@meta_url + @item_id) %>
-    <%# @meta.extend Geoportal::Result %>
-    <p>Meta: <%= @hits %></p>
-    <p>Item ID: <%= @item_id %></p>
+    <% @meta = get_item(@meta_url + @item_id) %>
+    <% @meta.extend Geoportal::Result %>
     <p>
-      <a href="/items/<%= @item_id %>"><%#= @meta.title %></a>
-      <span class="description"><%#= @meta.description %></span>
+      <a href="/items/<%= @item_id %>"><%= @meta.title %></a>
     </p>
-  </div>
+    <p>Keywords:
+      <% @meta.description.each do |kw| %>
+        <span class="keyword"><%= kw.text.strip %></span>
+      <% end %>
+    </p>
+
+    <% unless @meta.map_link.nil? %>
+      <%= erb :_utils %>
+    <% end %>
+
+       </div>
 <% end %>
 </div>
