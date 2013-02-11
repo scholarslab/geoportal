@@ -1,28 +1,27 @@
 <div class="content">
   <h1>Results</h1>
-</div>
-<%= erb :_search_form %>
 
-<% if @search.hits != 0 %>
-  <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
-returned <span id="hits"><%= @search.hits %></span> results.</p>
+  <%= erb :_search_form %>
 
-<p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
+  <% if @search.hits != 0 %>
+    <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
+  returned <span id="hits"><%= @search.hits %></span> results.</p>
+
+  <p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
 
 <% else %>
-  <p>No results found.</p>
-  <% end %>
-<hr/>
-<h3>Doc</h3>
-<div id="search_results">
-  <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
-    <% @item_id = item.xpath('.//id').first.content %>
-    <% @meta = get_item(@meta_url + @item_id) %>
-    <% @meta.extend Geoportal::Result %>
-    <p>
-      <a href="/items/<%= @item_id %>"><%= @meta.title %></a>
-    </p>
-    <p>Keywords:
+    <p>No results found.</p>
+<% end %>
+  <hr/>
+  <div id="search_results">
+    <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
+      <% @item_id = item.xpath('.//id').first.content %>
+      <% @meta = get_item(@meta_url + @item_id) %>
+      <% @meta.extend Geoportal::Result %>
+      <h2>
+        <a href="/items/<%= @item_id %>"><%= @meta.title %></a>
+      </h2>
+      <p>Keywords:
       <% @meta.description.each do |kw| %>
         <span class="keyword"><%= kw.text.strip %></span>
       <% end %>
@@ -31,7 +30,6 @@ returned <span id="hits"><%= @search.hits %></span> results.</p>
     <% unless @meta.map_link.nil? %>
       <%= erb :_utils %>
     <% end %>
-
-       </div>
-<% end %>
+  <% end %>
+  </div>
 </div>

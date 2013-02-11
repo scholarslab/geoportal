@@ -2,7 +2,7 @@
   <% unless @meta.layers.first.nil? %>
     <% @layers = '' %>
     <% @meta.layers.each do |layer| %>
-      <% @layers = @layers + layer + ',' %>r
+      <% @layers = @layers + layer + ',' %>
     <% end %>
     <span class="kml-link">
       <a href="<%= kml_url(@layers.chop) %>">Google Earth</a>
