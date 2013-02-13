@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'erb'
+require 'dotenv'
+require 'rgeoserver'
+
+Dotenv.load
 
 require File.join(File.dirname(__FILE__), 'environment')
 

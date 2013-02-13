@@ -11,6 +11,7 @@ configure do
     :geonetwork_port => ':8080',
     :geonetwork_mount => 'geonetwork',
     :geoserver_url => 'http://libsvr35.lib.virginia.edu/geoserver',
+    :geoserver_rest => 'http://libsvr35.lib.virginia.edu/geoserver/rest',
     :library_catalog => 'http://search.lib.virginia.edu/catalog/'
   )
 

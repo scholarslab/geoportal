@@ -1,14 +1,32 @@
+<!-- this needs to move -->
+<% workspace = /(.*)\:/.match(@doc.layers.first)[1] %>
+
+<%
+    catalog = RGeoServer::Catalog.new(
+      :user => ENV['GEOSERVER_USER'],
+      :url => SiteConfig.geoserver_rest,
+      :password=> ENV['GEOSERVER_PASSWORD'])
+
+w = catalog.get_workspace(workspace)
+ds = w.data_stores.first
+ft = ds.featuretypes
+@bbox = ft.first.profile['nativeBoundingBox']
+%>
+
 <div class="content">
   <h1><%= @doc.title %></h1>
-
+ 
   <div id="item_map"></div>
 
-
   <% unless @doc.web_service.first.nil? %>
-    <% layer_group = /(.*)\:/.match(@doc.layers.first)[1] %>
-    <% service_base = SiteConfig.geoserver_url + "/" + layer_group %>
-    <% wms_link = "#{service_base}/wms?request=getCapabilities"%>
-    <% wfs_link = "#{service_base}/wfs?request=getCapabilities"%>
+     <!-- todo: fix this -->
+     <% service_base = SiteConfig.geoserver_url + "/" + workspace %>
+     <% box = "#{@bbox['minx']},#{@bbox['miny']},#{@bbox['maxx']},#{@bbox['maxy']}" %>
+
+  <% wms_link = "#{service_base}/wms?request=getCapabilities"%>
+  <% wfs_link = "#{service_base}/wfs?request=getCapabilities"%>
+
+  <% layer_list = @doc.layers.to_a.join(',') %>
 
   <div id="arcgis_connection">
     <h3>ArcGIS Connection</h3>
@@ -19,11 +37,27 @@
   <div id="neatline_connection">
     <h3>Neatline Connection</h3>
     <p><strong>WMS Address</strong>: <%= "#{service_base}/wms" %><p>
-    <p><strong>Layers</strong>
-    <% @doc.layers.each do |layer| %>
-      <%= layer %><%= ","  %>
-  <% end %>
-    </p>
+    <p><strong>Layers</strong>: <%= layer_list %></p>
+  </div>
+
+  <div id="layers">
+
+    <% ft.each do |layer| %>
+      <% profile = layer.profile %>
+      <% bounds = profile['nativeBoundingBox'] %>
+      <% box = "#{bounds['minx']},#{bounds['miny']},#{bounds['maxx']},#{bounds['maxy']}" %>
+
+      <% pdf_link = "#{service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/pdf" %>
+      <% kml_link = "#{service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/vnd.google-earth.kml+xml" %>
+      <% jpeg_link = "#{service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=image/jpeg" %>
+
+      <p>
+        <%= profile['name'] %>: <a href="<%= pdf_link %>">PDF</a> | 
+        <a href="<%= jpeg_link %>">JPEG</a> |
+        <a href="<%= kml_link %>">KML</a>
+      </p>
+    <% end %>
+
   </div>
 <% end %>
 
@@ -42,16 +76,20 @@
   OpenLayers.ImgPath = "http://js.mapbox.com/theme/dark/";
 
   var bounds = new OpenLayers.Bounds(
-    <%= @doc.west.to_f %>,
-    <%= @doc.south.to_f %>,
-    <%= @doc.east.to_f %>,
-    <%= @doc.north.to_f %>);
+    <%= @bbox['minx'] %>,
+    <%= @bbox['miny'] %>,
+    <%= @bbox['maxx'] %>,
+    <%= @bbox['maxy'] %>
+  );
+
+  console.log('bounds', bounds);
 
     var map = new OpenLayers.Map({
       div: 'item_map',
-      projection: new OpenLayers.Projection("EPSG:4326"),
-      //displayProjection: new OpenLayers.Projection("EPSG:4326"),
+      projection: new OpenLayers.Projection("<%= @bbox['crs'] %>"),
+      displayProjection: new OpenLayers.Projection("EPSG:4326"),
       units: 'm',
+      maxExtent: bounds,
       maxResolution: 'auto',
       controls: [
         new OpenLayers.Control.Attribution(),
@@ -64,11 +102,9 @@
         new OpenLayers.Control.ScaleLine(),
         //new OpenLayers.Control.Permalink({anchor: true}),
         new OpenLayers.Control.MousePosition()
-        //new OpenLayers.Control.KeyboardDefaults()
       ],
       layers: [
         new OpenLayers.Layer.OSM()
-        //new OpenLayers.Layer.Boxes('BBox marker')
       ]
     });
 
@@ -86,8 +122,12 @@
       map.addLayer(<%= clean_layer %>);
     <% end %>
 
-    //  map.zoomToExtent(bounds);
-    map.zoomToMaxExtent();
+    var centerPoint = new OpenLayers.LonLat(bounds.getCenterLonLat());
+    //console.log('centerPoint', bounds.getCenterLonLat());
+     //map.setCenter(centerPoint);
+    map.zoomToExtent(bounds.toBBOX());
+    //map.zoomTo(map.getZoomForExtent(bounds));
+    //map.zoomToMaxExtent();
 
 
 

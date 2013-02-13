@@ -4,6 +4,8 @@ ruby "1.9.3"
 
 gem "sinatra"
 gem "foreman"
+gem "rgeoserver"
+gem "dotenv"
 
 group :rackup do
   gem "rack"

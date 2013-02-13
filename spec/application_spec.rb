@@ -21,9 +21,9 @@ describe 'The Geoportal App' do
     end
   end
 
-  describe "Get '/items/show/:id'" do
+  describe "Get '/items/:id'" do
     it "should be successful" do
-      get '/items/show/1'
+      get '/items/359'
       last_response.should be_ok
     end
   end
