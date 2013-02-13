@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           '<banner>',
-          '<%= meta.dest %>/vendor/OpenLayers.js',
+          //'<%= meta.dest %>/vendor/OpenLayers.js',
           '<%= meta.src %>'
         ],
         dest: 'public/js/<%= pkg.name %>.js'

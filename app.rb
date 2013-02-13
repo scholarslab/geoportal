@@ -85,11 +85,12 @@ get '/items/?' do
   erb :results
 end
 
-# TODO: Needs a rescue
-get '/items/show/:id' do
+get '/items/:id/?' do
   @id = params[:id].to_i
   @page_title = "Item #{@id}"
 
   @metadata = gn_url + "/xml.metadata.get?id=#{@id}"
+  @doc = get_item(@metadata)
+  @doc.extend Geoportal::Item
   erb :item
 end

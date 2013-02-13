@@ -7,8 +7,6 @@
     <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
   returned <span id="hits"><%= @search.hits %></span> results.</p>
 
-  <p>There's an <%= search_feed('virginia') %>, but is it useful?</p>
-
 <% else %>
     <p>No results found.</p>
 <% end %>
