@@ -1,19 +1,20 @@
 <div class="utils">
   <% unless @meta.layers.first.nil? %>
     <% @layers = '' %>
-    <% @meta.layers.each do |layer| %>
-      <% @layers = @layers + layer + ',' %>
-    <% end %>
-    <span class="kml-link">
-      <a href="<%= kml_url(@layers.chop) %>">Google Earth</a>
+  <% @meta.layers.each do |layer| %>
+    <% @layers = @layers + layer + ',' %>
+<% end %>
+  <span class="kml-link">
+    <a href="<%= kml_url(@layers.chop) %>">Google Earth
       <img alt="Google Earth Link" src="/images/ge.gif" />
-     </span>
-   <% end %>
+    </a>
+  </span>
+<% end %>
 
-   <% unless @meta.catalog_link.nil? %>
+  <% unless @meta.catalog_link.nil? %>
     <span class="catalog-link">
-      <a href="<%= cat_url(@item_id) %>">Virgo</a>
-      <img alt="catalog link" src="/images/browser.png" />
-    </span>
-   <% end %>
+    <a href="<%= cat_url(@item_id) %>">Virgo</a>
+    <img alt="catalog link" src="/images/browser.png" />
+  </span>
+<% end %>
 </div>
