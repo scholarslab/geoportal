@@ -1,19 +1,96 @@
 <div class="content">
   <h1><%= @doc.title %></h1>
+
   <div id="item_map"></div>
 
-  <p>Map Preview</p>
-<p>Need container for layers</p>
-<p>Google Earth link | Virgo Record Link</p>
-<h2>WMS Address</h2>
 
-<h2>Abstract</h2>
+  <% unless @doc.web_service.first.nil? %>
+    <% layer_group = /(.*)\:/.match(@doc.layers.first)[1] %>
+    <% service_base = SiteConfig.geoserver_url + "/" + layer_group %>
+    <% wms_link = "#{service_base}/wms?request=getCapabilities"%>
+    <% wfs_link = "#{service_base}/wfs?request=getCapabilities"%>
 
-<h2>Other stuff...</h2>
-<ol>
-  <li>NeatlineMaps link</li>
-  <li>GeoCommons</li>
-  <li>Connecting with ArcMap</li>
-</ol>
+  <div id="arcgis_connection">
+    <h3>ArcGIS Connection</h3>
+    <p><strong>WMS</strong>: <a href="<%= wms_link %>"><%= wms_link %></a></p>
+    <p><strong>WFS</strong>: <a href="<%= wfs_link %>"><%= wfs_link %></a></p>
+  </div>
+
+  <div id="neatline_connection">
+    <h3>Neatline Connection</h3>
+    <p><strong>WMS Address</strong>: <%= "#{service_base}/wms" %><p>
+    <p><strong>Layers</strong>
+    <% @doc.layers.each do |layer| %>
+      <%= layer %><%= ","  %>
+      <%= layer.class %>
+  <% end %>
+    </p>
+  </div>
+<% end %>
+
+  <h2>Abstract</h2>
+  <p><%= @doc.abstract %></p>
+
 </div>
 
+<script>
+
+(function() {
+  "use strict";
+
+  OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+  OpenLayers.Util.onImageLoadErrorColor = "transparent";
+  OpenLayers.ImgPath = "http://js.mapbox.com/theme/dark/";
+
+  var bounds = new OpenLayers.Bounds(
+    <%= @doc.west.to_f %>,
+    <%= @doc.south.to_f %>,
+    <%= @doc.east.to_f %>,
+    <%= @doc.north.to_f %>);
+
+    var map = new OpenLayers.Map({
+      div: 'item_map',
+      projection: new OpenLayers.Projection("EPSG:4326"),
+      //displayProjection: new OpenLayers.Projection("EPSG:4326"),
+      units: 'm',
+      maxResolution: 'auto',
+      controls: [
+        new OpenLayers.Control.Attribution(),
+        new OpenLayers.Control.Navigation(),
+        new OpenLayers.Control.PanZoomBar(),
+        new OpenLayers.Control.LayerSwitcher({
+          'ascending': true,
+          roundedCorner: false
+        }),
+        new OpenLayers.Control.ScaleLine(),
+        //new OpenLayers.Control.Permalink({anchor: true}),
+        new OpenLayers.Control.MousePosition()
+        //new OpenLayers.Control.KeyboardDefaults()
+      ],
+      layers: [
+        new OpenLayers.Layer.OSM()
+        //new OpenLayers.Layer.Boxes('BBox marker')
+      ]
+    });
+
+    <% @doc.layers.each do |layer| %>
+      <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
+
+      var <%= clean_layer %> = new OpenLayers.Layer.WMS(
+        "<%= clean_layer %>",  "<%= SiteConfig.geoserver_url + '/wms' %>",
+        {
+          layers: "<%= clean_layer %>"
+        },
+        {isBaseLayer: false}
+      );
+
+      map.addLayer(<%= clean_layer %>);
+    <% end %>
+
+    //  map.zoomToExtent(bounds);
+    map.zoomToMaxExtent();
+
+
+
+})();
+</script>

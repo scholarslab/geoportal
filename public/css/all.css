@@ -182,12 +182,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   }
 
   /* line 99, ../../_sass/all.scss */
-  #map {
-    height: 500px;
-    border-top: 1px solid rgba(51, 51, 51, 0.25);
+  #item_map {
+    height: 400px;
+    border: 1px solid silver;
   }
-  /* line 103, ../../_sass/all.scss */
-  #map .olControlLayerSwitcher {
+
+  /* line 104, ../../_sass/all.scss */
+  .olControlLayerSwitcher {
     /*background-color: #3c3b3a;*/
     background-color: #000;
     opacity: 0.8;
@@ -203,14 +204,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     top: 42px;
     width: 20em;
   }
-  /* line 119, ../../_sass/all.scss */
-  #map .olControlLayerSwitcher .layersDiv {
+  /* line 120, ../../_sass/all.scss */
+  .olControlLayerSwitcher .layersDiv {
     background-color: #000;
     margin: 1em !important;
     opacity: 0.8;
   }
 
-  /* line 127, ../../_sass/all.scss */
+  /* line 128, ../../_sass/all.scss */
+  #map {
+    height: 500px;
+    border-top: 1px solid rgba(51, 51, 51, 0.25);
+  }
+
+  /* line 134, ../../_sass/all.scss */
   footer[role=contentinfo] {
     padding: 2em;
     overflow: hidden;
@@ -218,94 +225,94 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     text-align: center;
   }
 
-  /* line 133, ../../_sass/all.scss */
+  /* line 140, ../../_sass/all.scss */
   #uvalibrary {
     opacity: 0.4;
     width: 225px;
     margin: 20px auto;
   }
-  /* line 138, ../../_sass/all.scss */
+  /* line 145, ../../_sass/all.scss */
   #uvalibrary:link, #uvalibrary:visited {
     opacity: 0.4;
   }
-  /* line 142, ../../_sass/all.scss */
+  /* line 149, ../../_sass/all.scss */
   #uvalibrary:hover, #uvalibrary:focus {
     opacity: 0.6;
   }
-  /* line 145, ../../_sass/all.scss */
+  /* line 152, ../../_sass/all.scss */
   #uvalibrary:active {
     opacity: 0.8;
   }
-  /* line 149, ../../_sass/all.scss */
+  /* line 156, ../../_sass/all.scss */
   #uvalibrary img {
     max-width: 100%;
   }
 
-  /* line 154, ../../_sass/all.scss */
+  /* line 161, ../../_sass/all.scss */
   #scholarslab {
     width: 100px;
     margin: 20px auto;
     opacity: 0.4;
   }
-  /* line 160, ../../_sass/all.scss */
+  /* line 167, ../../_sass/all.scss */
   #scholarslab:link, #scholarslab:visited {
     opacity: 0.4;
   }
-  /* line 164, ../../_sass/all.scss */
+  /* line 171, ../../_sass/all.scss */
   #scholarslab:hover, #scholarslab:focus {
     opacity: 0.6;
   }
-  /* line 167, ../../_sass/all.scss */
+  /* line 174, ../../_sass/all.scss */
   #scholarslab:active {
     opacity: 0.8;
   }
-  /* line 171, ../../_sass/all.scss */
+  /* line 178, ../../_sass/all.scss */
   #scholarslab img {
     max-width: 100%;
   }
 }
 @media screen and (min-width: 720px) {
-  /* line 180, ../../_sass/all.scss */
+  /* line 187, ../../_sass/all.scss */
   body {
     margin: 0 40px;
     position: relative;
   }
 
-  /* line 185, ../../_sass/all.scss */
+  /* line 192, ../../_sass/all.scss */
   header[role=banner] {
     padding: 100px 2em 20px;
     overflow: hidden;
     *zoom: 1;
   }
-  /* line 189, ../../_sass/all.scss */
+  /* line 196, ../../_sass/all.scss */
   header[role=banner] h1 {
     font-size: 2.875em;
     line-height: 1.56522em;
     line-height: 1.5em;
   }
 
-  /* line 196, ../../_sass/all.scss */
+  /* line 203, ../../_sass/all.scss */
   .content {
     padding: 20px 2em;
   }
 
-  /* line 201, ../../_sass/all.scss */
+  /* line 208, ../../_sass/all.scss */
   #search fieldset {
     padding: 1em 2em;
   }
-  /* line 205, ../../_sass/all.scss */
+  /* line 212, ../../_sass/all.scss */
   #search .explanation {
     margin-left: 2em;
     margin-right: 2em;
   }
 
-  /* line 211, ../../_sass/all.scss */
+  /* line 218, ../../_sass/all.scss */
   .introduction {
     font-size: 1.125em;
     line-height: 1.33333em;
   }
 
-  /* line 215, ../../_sass/all.scss */
+  /* line 222, ../../_sass/all.scss */
   footer[role="contentinfo"] {
     position: absolute;
     top: 20px;
@@ -314,18 +321,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 100%;
   }
 
-  /* line 225, ../../_sass/all.scss */
+  /* line 232, ../../_sass/all.scss */
   #uvalibrary,
   #scholarslab {
     margin: 0;
   }
 
-  /* line 229, ../../_sass/all.scss */
+  /* line 236, ../../_sass/all.scss */
   #uvalibrary {
     float: left;
   }
 
-  /* line 233, ../../_sass/all.scss */
+  /* line 240, ../../_sass/all.scss */
   #scholarslab {
     float: right;
     margin-right: 30px;
