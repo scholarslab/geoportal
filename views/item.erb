@@ -1,17 +1,18 @@
-<!-- this needs to move -->
-<% workspace = /(.*)\:/.match(@doc.layers.first)[1] %>
+<% %>
+  <%#@workspace = $CATALOG.get_workspace(workspace)%>
 
-<%
-    catalog = RGeoServer::Catalog.new(
-      :user => ENV['GEOSERVER_USER'],
-      :url => SiteConfig.geoserver_rest,
-      :password=> ENV['GEOSERVER_PASSWORD'])
+  <%#begin%>
+    <%#@feature_types = @workspace.data_stores.first.featuretypes%>
 
-w = catalog.get_workspace(workspace)
-ds = w.data_stores.first
-ft = ds.featuretypes
-@bbox = ft.first.profile['nativeBoundingBox']
-%>
+  <%# first profile in the workspace's bbox; hopefully it's consistent...%>
+    <%#@bbox = @feature_types.first.profile['nativeBoundingBox']%>
+  <%#rescue%>
+    <%#@feature_types = nil%>
+    <%#@bbox = nil%>
+  <%#end%>
+
+  <%#@service_base = SiteConfig.geoserver_url + "/" + @workspace.name%>
+
 
 <div class="content">
   <h1><%= @doc.title %></h1>
@@ -19,14 +20,13 @@ ft = ds.featuretypes
   <div id="item_map"></div>
 
   <% unless @doc.web_service.first.nil? %>
-     <!-- todo: fix this -->
-     <% service_base = SiteConfig.geoserver_url + "/" + workspace %>
-     <% box = "#{@bbox['minx']},#{@bbox['miny']},#{@bbox['maxx']},#{@bbox['maxy']}" %>
 
-  <% wms_link = "#{service_base}/wms?request=getCapabilities"%>
-  <% wfs_link = "#{service_base}/wfs?request=getCapabilities"%>
+    <!-- TODO: refactor in to reflector classes on an item object -->
+    <% wms_link = "#{@service_base}/wms?request=getCapabilities"%>
+    <% wfs_link = "#{@service_base}/wfs?request=getCapabilities"%>
 
-  <% layer_list = @doc.layers.to_a.join(',') %>
+    <!-- this is from Geonetwork -->
+    <% layer_list = @doc.layers.to_a.join(',') %>
 
   <div id="arcgis_connection">
     <h3>ArcGIS Connection</h3>
@@ -36,26 +36,32 @@ ft = ds.featuretypes
 
   <div id="neatline_connection">
     <h3>Neatline Connection</h3>
-    <p><strong>WMS Address</strong>: <%= "#{service_base}/wms" %><p>
+    <p><strong>WMS Address</strong>: <%= "#{@service_base}/wms" %><p>
     <p><strong>Layers</strong>: <%= layer_list %></p>
   </div>
 
   <div id="layers">
 
-    <% ft.each do |layer| %>
-      <% profile = layer.profile %>
-      <% bounds = profile['nativeBoundingBox'] %>
-      <% box = "#{bounds['minx']},#{bounds['miny']},#{bounds['maxx']},#{bounds['maxy']}" %>
+    <%#<% @feature_types.each do |layer| %>%>
+      <%#<% profile = layer.profile %>%>
+      <%#<% bounds = profile['nativeBoundingBox'] %>%>
+      <%#<% box = "#{bounds['minx']},#{bounds['miny']},#{bounds['maxx']},#{bounds['maxy']}" %>%>
+      <%#<% width = "" %>%>
+      <%#<% height = "" %>%>
 
-      <% pdf_link = "#{service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/pdf" %>
-      <% kml_link = "#{service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/vnd.google-earth.kml+xml" %>
-      <% jpeg_link = "#{service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=image/jpeg" %>
+      <!-- TODO: merge in to uri -->
+
+      <%#<% pdf_link = "#{@service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/pdf" %>%>
+      <%#<% kml_link = "#{@service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/vnd.google-earth.kml+xml" %>%>
+      <%#<% jpeg_link = "#{@service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=image/jpeg" %>%>
+      <%#<% shape_link = "#{@service_base}/ows?service=WFS&request=GetFeatures&typeName=#{profile['workspace']}:#{profile['name']}&outputformat=SHAPE_ZIP" %>%>
 
       <p>
-        <%= profile['name'] %>: <a href="<%= pdf_link %>">PDF</a> | 
-        <a href="<%= jpeg_link %>">JPEG</a> |
-        <a href="<%= kml_link %>">KML</a>
-      </p>
+        <#%= profile['name'] %>: <a href="<%= pdf_link %>">PDF</a> | 
+        <a href="<%#= jpeg_link %>">JPEG</a> |
+        <a href="<%#= kml_link %>">KML</a> |
+        <!-- <a href="<%#= shape_link %>">Shapefile</a>-->
+        </p>
     <% end %>
 
   </div>
@@ -90,7 +96,7 @@ ft = ds.featuretypes
       displayProjection: new OpenLayers.Projection("EPSG:4326"),
       units: 'm',
       maxExtent: bounds,
-      maxResolution: 'auto',
+      //maxResolution: 'auto',
       controls: [
         new OpenLayers.Control.Attribution(),
         new OpenLayers.Control.Navigation(),
@@ -122,12 +128,17 @@ ft = ds.featuretypes
       map.addLayer(<%= clean_layer %>);
     <% end %>
 
-    var centerPoint = new OpenLayers.LonLat(bounds.getCenterLonLat());
+    //var centerPoint = new OpenLayers.LonLat(bounds.getCenterLonLat());
     //console.log('centerPoint', bounds.getCenterLonLat());
      //map.setCenter(centerPoint);
-    map.zoomToExtent(bounds.toBBOX());
+    map.zoomToExtent(bounds);
+    console.log('zoom', map.getZoomForExtent(bounds));
+
+    console.log('map', map);
     //map.zoomTo(map.getZoomForExtent(bounds));
-    //map.zoomToMaxExtent();
+    map.zoomToMaxExtent();
+
+
 
 
 

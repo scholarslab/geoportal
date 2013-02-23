@@ -15,6 +15,12 @@ configure do
     :library_catalog => 'http://search.lib.virginia.edu/catalog/'
   )
 
+  $CATALOG = RGeoServer::Catalog.new(
+      :user => ENV['GEOSERVER_USER'],
+      :url => SiteConfig.geoserver_rest,
+      :password=> ENV['GEOSERVER_PASSWORD']
+  )
+
   # Load modules
   $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/lib/")
   Dir.glob("#{File.dirname(__FILE__)}/lib/*.rb") {|lib| require File.basename(lib, '.*') }

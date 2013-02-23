@@ -7,7 +7,6 @@ Dotenv.load
 
 require File.join(File.dirname(__FILE__), 'environment')
 
-
 error do
   error = request.env['sinatra.error']
   Kernel.puts e.backtrace.join("\n")
@@ -93,8 +92,14 @@ get '/items/:id/?' do
   @id = params[:id].to_i
   @page_title = "Item #{@id}"
 
+  # Geonetwork stuff
   @metadata = gn_url + "/xml.metadata.get?id=#{@id}"
   @doc = get_item(@metadata)
   @doc.extend Geoportal::Item
-  erb :item
+
+  # TODO: refactor to Item object
+  @workspace =  /(.*)\:/.match(@doc.layers.first)[1]
+
+  # Yeah...the view
+  erb :raster
 end
