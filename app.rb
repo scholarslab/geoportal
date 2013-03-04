@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'erb'
-require 'dotenv'
-require 'rgeoserver'
+#require 'dotenv'
+#require 'rgeoserver'
 
-Dotenv.load
+#Dotenv.load
 
 require File.join(File.dirname(__FILE__), 'environment')
 
@@ -44,12 +44,16 @@ helpers do
     SiteConfig.geoserver_url + "/wms/kml?layers=#{layers}"
   end
 
-  def content_url(layers, format, styles)
-    gn_base + "/geoserver/wms/reflect?layers=" + layers + "&format=" + format + "&styles=" + styles + "&width=680&height=480"
+  def content_url(layers, format, styles = '')
+    SiteConfig.geoserver_url + "/wms/reflect?layers=" + layers + "&format=" + format + "&styles=" + styles + "&width=680&height=480"
   end
 
   def cat_url(item)
     SiteConfig.library_catalog + item
+  end
+
+  def link_helper(url, text)
+    "<a href='#{url}'>#{text}</a>"
   end
 end
 
@@ -101,5 +105,5 @@ get '/items/:id/?' do
   @workspace =  /(.*)\:/.match(@doc.layers.first)[1]
 
   # Yeah...the view
-  erb :raster
+  erb :item
 end

@@ -11,15 +11,15 @@ configure do
     :geonetwork_port => ':8080',
     :geonetwork_mount => 'geonetwork',
     :geoserver_url => 'http://libsvr35.lib.virginia.edu/geoserver',
-    :geoserver_rest => 'http://libsvr35.lib.virginia.edu/geoserver/rest',
+    #:geoserver_rest => 'http://libsvr35.lib.virginia.edu/geoserver/rest',
     :library_catalog => 'http://search.lib.virginia.edu/catalog/'
   )
 
-  $CATALOG = RGeoServer::Catalog.new(
-      :user => ENV['GEOSERVER_USER'],
-      :url => SiteConfig.geoserver_rest,
-      :password=> ENV['GEOSERVER_PASSWORD']
-  )
+  #$CATALOG = RGeoServer::Catalog.new(
+      #:user => ENV['GEOSERVER_USER'],
+      #:url => SiteConfig.geoserver_rest,
+      #:password=> ENV['GEOSERVER_PASSWORD']
+  #)
 
   # Load modules
   $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/lib/")

@@ -1,41 +1,41 @@
 <%
-  @workspace = $CATALOG.get_workspace('McGregor')
-@wp2 = $CATALOG.get_workspace('Afghanistan')
+  #@workspace = $CATALOG.get_workspace('McGregor')
+#@wp2 = $CATALOG.get_workspace('Afghanistan')
+%>
+
+<%#def layer_type(workspace)%>
+  <%#if(workspace.profile['dataStores'].any?)%>
+    <%#type = 'vector'%>
+   <%#elsif(workspace.profile['coverageStores'].any?)%>
+    <%#type = 'raster'%>
+  <%#end%>
+<%#end%>
 
 
-def layer_type(workspace)
-  if(workspace.profile['dataStores'].any?)
-    type = 'vector'
-   elsif(workspace.profile['coverageStores'].any?)
-    type = 'raster'
-  end
-end
+<%#def layers(workspace)%>
+  <%#layers = nil%>
+  <%#if(workspace.profile['dataStores'].any?)%>
+    <%#layers = workspace.data_stores.first%>
+  <%#elsif(workspace.profile['coverageStores'].any?)%>
+    <%#layers = workspace.coverage_stores%>
+  <%#end%>
+  <%#layers%>
+<%#end%>
 
+<%#def vector_layers(datastore)%>
 
-def layers(workspace)
-  layers = nil
-  if(workspace.profile['dataStores'].any?)
-    layers = workspace.data_stores.first
-  elsif(workspace.profile['coverageStores'].any?)
-    layers = workspace.coverage_stores
-  end
-  layers
-end
+<%#end%>
 
-def vector_layers(datastore)
-
-end
-
-def raster_layers(datastore)
+<%#def raster_layers(datastore)%>
   
-end
+<%#end%>
 
 
 
-@ws_type = layer_type(@workspace)
-@wp2_type = layer_type(@wp2)
+<%#@ws_type = layer_type(@workspace)%>
+<%#@wp2_type = layer_type(@wp2)%>
 
-  %>
+ 
 
 <div id="item_map"></div>
 
@@ -55,7 +55,7 @@ end
 
 <h1>Workspace</h1>
 
-<%= @workspace.coverage_stores.first.profile %>
+<%#= @workspace.coverage_stores.first.profile %>
 
 
 <br/><br/>
@@ -63,9 +63,9 @@ end
 
 
 
-<% l = layers(@workspace) %>
-<% l.each do |layer| %>
-  <%= layer.profile %>
+<%# l = layers(@workspace) %>
+<%# l.each do |layer| %>
+  <%#= layer.profile %>
 <% end %>
 </p>
 
@@ -73,9 +73,9 @@ end
 <p>
 
 <p>
-<% l = layers(@wp2) %>
+<%# l = layers(@wp2) %>
 <%# l.each do |layer| %>
-  <%= l.profile %>
+  <%#= l.profile %>
   <%# end %>
 </p>
 

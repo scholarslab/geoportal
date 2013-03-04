@@ -1,32 +1,19 @@
-<% %>
-  <%#@workspace = $CATALOG.get_workspace(workspace)%>
-
-  <%#begin%>
-    <%#@feature_types = @workspace.data_stores.first.featuretypes%>
-
-  <%# first profile in the workspace's bbox; hopefully it's consistent...%>
-    <%#@bbox = @feature_types.first.profile['nativeBoundingBox']%>
-  <%#rescue%>
-    <%#@feature_types = nil%>
-    <%#@bbox = nil%>
-  <%#end%>
-
-  <%#@service_base = SiteConfig.geoserver_url + "/" + @workspace.name%>
+<% @service_base = SiteConfig.geoserver_url + "/" + @workspace %>
 
 
 <div class="content">
   <h1><%= @doc.title %></h1>
- 
+
   <div id="item_map"></div>
 
   <% unless @doc.web_service.first.nil? %>
 
     <!-- TODO: refactor in to reflector classes on an item object -->
-    <% wms_link = "#{@service_base}/wms?request=getCapabilities"%>
-    <% wfs_link = "#{@service_base}/wfs?request=getCapabilities"%>
+  <% wms_link = "#{@service_base}/wms?request=getCapabilities"%>
+  <% wfs_link = "#{@service_base}/wfs?request=getCapabilities"%>
 
-    <!-- this is from Geonetwork -->
-    <% layer_list = @doc.layers.to_a.join(',') %>
+  <!-- this is from Geonetwork -->
+  <% layer_list = @doc.layers.to_a.join(',') %>
 
   <div id="arcgis_connection">
     <h3>ArcGIS Connection</h3>
@@ -42,34 +29,31 @@
 
   <div id="layers">
 
-    <%#<% @feature_types.each do |layer| %>%>
-      <%#<% profile = layer.profile %>%>
-      <%#<% bounds = profile['nativeBoundingBox'] %>%>
-      <%#<% box = "#{bounds['minx']},#{bounds['miny']},#{bounds['maxx']},#{bounds['maxy']}" %>%>
-      <%#<% width = "" %>%>
-      <%#<% height = "" %>%>
+    <h3>Layer Preview</h3>
 
-      <!-- TODO: merge in to uri -->
-
-      <%#<% pdf_link = "#{@service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/pdf" %>%>
-      <%#<% kml_link = "#{@service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=application/vnd.google-earth.kml+xml" %>%>
-      <%#<% jpeg_link = "#{@service_base}/wms?request=GetMap&layers=#{profile['name']}&bbox=#{box}&width=512&height=378&format=image/jpeg" %>%>
-      <%#<% shape_link = "#{@service_base}/ows?service=WFS&request=GetFeatures&typeName=#{profile['workspace']}:#{profile['name']}&outputformat=SHAPE_ZIP" %>%>
+    <% @doc.layers.each do |layer| %>
+      <% pdf_link = content_url(layer, 'application/pdf') %>
+      <% kml_link = content_url(layer, 'application/vnd.google-earth.kml+xml') %>
+      <% jpeg_link = content_url(layer, 'image/jpeg') %>
+      <% openlayers_link = content_url(layer, 'openlayers') %>
 
       <p>
-        <#%= profile['name'] %>: <a href="<%= pdf_link %>">PDF</a> | 
-        <a href="<%#= jpeg_link %>">JPEG</a> |
-        <a href="<%#= kml_link %>">KML</a> |
-        <!-- <a href="<%#= shape_link %>">Shapefile</a>-->
-        </p>
-    <% end %>
+      <strong><%= layer.content %></strong> (
+        <%= link_helper(pdf_link, 'PDF') %>,
+        <%= link_helper(kml_link, 'KML') %>,
+        <%= link_helper(jpeg_link, 'JPEG') %>,
+        <%= link_helper(openlayers_link, 'Web Map') %>
+      )
+      </p>
+  <% end %>
 
   </div>
 <% end %>
 
-  <h2>Abstract</h2>
-  <p><%= @doc.abstract %></p>
-
+  <div id="abstract">
+    <h2>Abstract</h2>
+    <p><%= @doc.abstract.gsub(/\n/, '<br/>') %></p>
+  </div>
 </div>
 
 <script>
@@ -82,61 +66,61 @@
   OpenLayers.ImgPath = "http://js.mapbox.com/theme/dark/";
 
   var bounds = new OpenLayers.Bounds(
-    <%= @bbox['minx'] %>,
-    <%= @bbox['miny'] %>,
-    <%= @bbox['maxx'] %>,
-    <%= @bbox['maxy'] %>
+    <%= @doc.south %>,
+    <%= @doc.west  %>,
+    <%= @doc.north %>,
+    <%= @doc.east  %>
   );
 
   console.log('bounds', bounds);
 
-    var map = new OpenLayers.Map({
-      div: 'item_map',
-      projection: new OpenLayers.Projection("<%= @bbox['crs'] %>"),
-      displayProjection: new OpenLayers.Projection("EPSG:4326"),
-      units: 'm',
-      maxExtent: bounds,
-      //maxResolution: 'auto',
-      controls: [
-        new OpenLayers.Control.Attribution(),
-        new OpenLayers.Control.Navigation(),
-        new OpenLayers.Control.PanZoomBar(),
-        new OpenLayers.Control.LayerSwitcher({
-          'ascending': true,
-          roundedCorner: false
-        }),
-        new OpenLayers.Control.ScaleLine(),
-        //new OpenLayers.Control.Permalink({anchor: true}),
-        new OpenLayers.Control.MousePosition()
-      ],
-      layers: [
-        new OpenLayers.Layer.OSM()
-      ]
-    });
+  var map = new OpenLayers.Map({
+    div: 'item_map',
+    projection: new OpenLayers.Projection("EPSG:4326"),
+    displayProjection: new OpenLayers.Projection("EPSG:4326"),
+    units: 'm',
+    maxExtent: bounds,
+    //maxResolution: 'auto',
+    controls: [
+      new OpenLayers.Control.Attribution(),
+      new OpenLayers.Control.Navigation(),
+      new OpenLayers.Control.PanZoomBar(),
+      new OpenLayers.Control.LayerSwitcher({
+        'ascending': true,
+        roundedCorner: false
+      }),
+      new OpenLayers.Control.ScaleLine(),
+      //new OpenLayers.Control.Permalink({anchor: true}),
+      new OpenLayers.Control.MousePosition()
+    ],
+    layers: [
+      new OpenLayers.Layer.OSM()
+    ]
+  });
 
-    <% @doc.layers.each do |layer| %>
-      <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
+  <% @doc.layers.each do |layer| %>
+    <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
 
-      var <%= clean_layer %> = new OpenLayers.Layer.WMS(
-        "<%= clean_layer %>",  "<%= SiteConfig.geoserver_url + '/wms' %>",
-        {
-          layers: "<%= clean_layer %>"
-        },
-        {isBaseLayer: false}
-      );
+    var <%= clean_layer %> = new OpenLayers.Layer.WMS(
+      "<%= clean_layer %>",  "<%= SiteConfig.geoserver_url + '/wms' %>",
+      {
+        layers: "<%= clean_layer %>"
+      },
+      {isBaseLayer: false}
+    );
 
-      map.addLayer(<%= clean_layer %>);
-    <% end %>
+    map.addLayer(<%= clean_layer %>);
+  <% end %>
 
-    //var centerPoint = new OpenLayers.LonLat(bounds.getCenterLonLat());
-    //console.log('centerPoint', bounds.getCenterLonLat());
-     //map.setCenter(centerPoint);
-    map.zoomToExtent(bounds);
-    console.log('zoom', map.getZoomForExtent(bounds));
+  //var centerPoint = new OpenLayers.LonLat(bounds.getCenterLonLat());
+  //console.log('centerPoint', bounds.getCenterLonLat());
+  //map.setCenter(centerPoint);
+  map.zoomToExtent(bounds);
+  console.log('zoom', map.getZoomForExtent(bounds));
 
-    console.log('map', map);
-    //map.zoomTo(map.getZoomForExtent(bounds));
-    map.zoomToMaxExtent();
+  console.log('map', map);
+  //map.zoomTo(map.getZoomForExtent(bounds));
+  map.zoomToMaxExtent();
 
 
 
