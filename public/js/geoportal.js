@@ -1,8 +1,3 @@
-/* geoportal - v0.0.1 - 2/13/2013
-* http://scholarslab.org
-* Copyright (c) 2013 Wayne Graham
-* Licensed Apache 2.0 */
-
 var Geoportal = Geoportal || {};
 var OpenLayers = OpenLayers || {};
 var google = google || {};
@@ -29,30 +24,11 @@ Geoportal.map = (function() {
       new OpenLayers.Control.Attribution(),
       new OpenLayers.Control.Navigation(),
       new OpenLayers.Control.PanZoomBar(),
-      //new OpenLayers.Control.LayerSwitcher({
-      //'ascending': true,
-      //roundedCorner: false
-      //}),
       new OpenLayers.Control.ScaleLine(),
-      //new OpenLayers.Control.Permalink({anchor: true}),
       new OpenLayers.Control.MousePosition()
-      //new OpenLayers.Control.KeyboardDefaults()
     ],
     layers: [
       new OpenLayers.Layer.OSM()
-      //new OpenLayers.Layer.Google(
-      //"Google Physical",
-      //{type: google.maps.MapTypeId.TERRAIN}
-      //),
-      //new OpenLayers.Layer.Google(
-      //"Google Hybrid",
-      //{type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
-      //),
-      //new OpenLayers.Layer.Google(
-      //"Google Satellite",
-      //{type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
-      //),
-      //new OpenLayers.Layer.Boxes('BBox marker')
     ]
   });
 

@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
   // project configuration
   grunt.initConfig({
-    pkg: '<json:package.json>',
+    pkg: grunt.file.readJSON('package.json'),
     meta: {
       src: 'src/**/*.js',
       dest: 'public/js/',
@@ -23,53 +23,9 @@ module.exports = function(grunt) {
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
         '* Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
-    test: {
-      files: ['test/**/*.js']
-    },
-    watch: {
-      files: ['Gruntfile.js', '<config:lint.files>'],
-      test: {
-        files: ['<%= meta.src %>', '<%= meta.specs %>'],
-        tasks: 'test'
-      }
-    },
-    concat: {
-      dist: {
-        src: [
-          '<banner>',
-          //'<%= meta.dest %>/vendor/OpenLayers.js',
-          '<%= meta.src %>'
-        ],
-        dest: 'public/js/<%= pkg.name %>.js'
-      }
-    },
-    min: {
-      dist: {
-        src: ['<banner>', '<%= meta.dest %><%= pkg.name %>.js'],
-        dest: '<%= meta.dest %><%= pkg.name %>.min.js'
-      }
-    },
-    uglify: {
-      mangle: {toplevel: false},
-      squeeze: {dead_code: false},
-      codegen: {quote_keys: true},
-      options: {
-        sourceMap: 'public/js/source-map.js'
-      },
-      front_end: {
-        files: {
-           '<%= meta.dest %><%= pkg.name %>.min.js': ['<%= meta.dest %><%= pkg.name %>.js']
-        }
-      }
-    },
-    lint: {
-      files: ['<%= meta.src %>', '<%= meta.specs %>']
-    },
     jshint: {
-      all: [
-        //'Gruntfile.js',
-        '<%= meta.src %>',
-        '<%= meta.specs %>'
+      files: [
+        '<%= meta.src %>'
       ],
       options: {
         curly: true,
@@ -92,10 +48,35 @@ module.exports = function(grunt) {
         it : false,
         spyOn : false
       }
-    }
+    },
+
+    watch: {
+      files: ['<%= jshint.files %>'],
+      tasks: ['jshint', 'uglify']
+    },
+    concat: {
+      dist: {
+        src: [
+          '<%= meta.src %>'
+        ],
+        dest: 'public/js/<%= pkg.name %>.js'
+      }
+    },
+    uglify: {
+      mangle: {toplevel: false},
+      squeeze: {dead_code: false},
+      codegen: {quote_keys: true},
+      options: {
+        sourceMap: 'public/js/source-map.js',
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+      },
+      dist: {
+        files: {
+          '<%= meta.dest %><%= pkg.name %>.min.js': ['<%= meta.dest %><%= pkg.name %>.js']
+        }
+      }
+    },
   });
-
-
 
   grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 };
