@@ -1,7 +1,15 @@
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 cc=76; */
 module.exports = function(grunt) {
   'use strict';
 
-  grunt.loadNpmTasks('grunt-contrib');
+  //grunt.loadNpmTasks('grunt-contrib');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // project configuration
   grunt.initConfig({
@@ -47,6 +55,11 @@ module.exports = function(grunt) {
       codegen: {quote_keys: true},
       options: {
         sourceMap: 'public/js/source-map.js'
+      },
+      front_end: {
+        files: {
+           '<%= meta.dest %><%= pkg.name %>.min.js': ['<%= meta.dest %><%= pkg.name %>.js']
+        }
       }
     },
     lint: {
@@ -54,7 +67,7 @@ module.exports = function(grunt) {
     },
     jshint: {
       all: [
-        'Gruntfile.js',
+        //'Gruntfile.js',
         '<%= meta.src %>',
         '<%= meta.specs %>'
       ],
@@ -82,8 +95,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', 'lint concat min');
+
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 };
