@@ -20,6 +20,7 @@ group :development do
 
   # deployment
   gem "capistrano"
+  gem "capistrano-multistage"
 
   # guard stuff
   gem 'guard'
