@@ -1,9 +1,6 @@
 require 'sinatra'
 require 'erb'
-#require 'dotenv'
-#require 'rgeoserver'
-
-#Dotenv.load
+require "sinatra/content_for"
 
 require File.join(File.dirname(__FILE__), 'environment')
 
@@ -14,6 +11,8 @@ error do
 end
 
 helpers do
+
+  helpers Sinatra::ContentFor
 
   def search_feed(query_string = '')
     rss = "#{gn_url}/rss.search?any=#{query_string}"
@@ -41,7 +40,20 @@ helpers do
   end
 
   def kml_url(layers)
+    # kml has a special reflector
     SiteConfig.geoserver_url + "/wms/kml?layers=#{layers}"
+  end
+
+  def pdf_url(layers)
+    content_url(layers, 'application/pdf')
+  end
+
+  def jpeg_url(layers)
+    content_url(layers, 'image/jpeg')
+  end
+
+  def ol_url(layers)
+    content_url(layers, 'openlayers')
   end
 
   def content_url(layers, format, styles = '')
@@ -54,6 +66,13 @@ helpers do
 
   def link_helper(url, text)
     "<a href='#{url}'>#{text}</a>"
+  end
+
+  # rails-style link_to
+  def link_to(url, text=Url, opts={})
+    attributes = ""
+    opts.each {|key, value| attributes << key.to_s << "=\"" << value << "\" "}
+    "<a href=\"#{url}\" #{attributes}>#{text}</a>"
   end
 end
 
