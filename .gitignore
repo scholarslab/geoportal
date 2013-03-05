@@ -2,6 +2,6 @@
 .jhw-cache/
 tmp/
 node_modules/
-config/deploy.rb
+config/deploy/
 
 
