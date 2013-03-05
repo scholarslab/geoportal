@@ -67,11 +67,11 @@ Geoportal.map = (function() {
   map.addControl(control);
   map.addLayer(mrk);
 
-
   if (!map.getCenter()) {
     map.setCenter(slab);
     map.zoomToMaxExtent();
   }
+
 
 
 })(Geoportal);

@@ -5,6 +5,7 @@
   <h1><%= @doc.title %></h1>
 
   <div id="item_map"></div>
+  <div id="layerswitcher" class="olControlLayerSwitcher"></div>
 
   <div id="categories">
     <h2>Categories</h2>
@@ -94,10 +95,11 @@
       new OpenLayers.Control.Attribution(),
       new OpenLayers.Control.Navigation(),
       new OpenLayers.Control.PanZoomBar(),
-      new OpenLayers.Control.LayerSwitcher({
-        'ascending': true,
-        roundedCorner: false
-      }),
+      new OpenLayers.Control.LayerSwitcher(
+        {
+          'div': OpenLayers.Util.getElement('layerswitcher')
+        }
+      ),
       new OpenLayers.Control.ScaleLine(),
       new OpenLayers.Control.MousePosition()
     ]
@@ -121,9 +123,9 @@
 
 
 <script src="/js/vendor/jquery.colorbox-min.js"></script>
-<script>$(document).ready(function(){
-$(".ajax").colorbox({iframe: true, width:"80%", height:"80%"});
-});
+<script>
+//todo refactor this
+$(document).ready(function(){$(".ajax").colorbox({iframe:!0,width:"80%",height:"80%"})});
 </script>
 
 <% end %>
