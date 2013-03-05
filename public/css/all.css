@@ -1,4 +1,4 @@
-/* line 17, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,64 +20,143 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+/* line 5, ../../_sass/_colorbox.scss */
+#colorbox, #cboxOverlay, #cboxWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* line 6, ../../_sass/_colorbox.scss */
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 7, ../../_sass/_colorbox.scss */
+#cboxMiddleLeft, #cboxBottomLeft {
+  clear: left;
+}
+
+/* line 8, ../../_sass/_colorbox.scss */
+#cboxContent {
+  position: relative;
+}
+
+/* line 9, ../../_sass/_colorbox.scss */
+#cboxLoadedContent {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 10, ../../_sass/_colorbox.scss */
+#cboxTitle {
+  margin: 0;
+}
+
+/* line 11, ../../_sass/_colorbox.scss */
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 12, ../../_sass/_colorbox.scss */
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+  cursor: pointer;
+}
+
+/* line 13, ../../_sass/_colorbox.scss */
+.cboxPhoto {
+  float: left;
+  margin: auto;
+  border: 0;
+  display: block;
+  max-width: none;
+}
+
+/* line 14, ../../_sass/_colorbox.scss */
+.cboxIframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+/* line 15, ../../_sass/_colorbox.scss */
+#colorbox, #cboxContent, #cboxLoadedContent {
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+
 @media screen {
-  /* line 14, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/susy-1.0.5/sass/susy/_grid.scss */
+  /* line 14, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/susy-1.0.5/sass/susy/_grid.scss */
   * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
 
-  /* line 10, ../../_sass/all.scss */
+  /* line 11, ../../_sass/all.scss */
   html {
     background-color: #f3f3f3;
     border-top: 5px solid #338899;
   }
 
-  /* line 15, ../../_sass/all.scss */
+  /* line 16, ../../_sass/all.scss */
   body {
     *zoom: 1;
     padding-left: 0;
@@ -94,100 +173,100 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
-  /* line 38, ../../../../.rvm/gems/ruby-1.9.3-p385@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  /* line 38, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
   body:after {
     content: "";
     display: table;
     clear: both;
   }
 
-  /* line 27, ../../_sass/all.scss */
+  /* line 28, ../../_sass/all.scss */
   a:link {
     color: #369;
   }
-  /* line 31, ../../_sass/all.scss */
+  /* line 32, ../../_sass/all.scss */
   a:visited {
     color: #38c;
   }
-  /* line 36, ../../_sass/all.scss */
+  /* line 37, ../../_sass/all.scss */
   a:hover, a:focus {
     color: #38c;
   }
-  /* line 40, ../../_sass/all.scss */
+  /* line 41, ../../_sass/all.scss */
   a:active {
     color: #036;
   }
 
-  /* line 45, ../../_sass/all.scss */
+  /* line 46, ../../_sass/all.scss */
   h1, h2, h3 {
     font-family: "Crimson Text", "Times New Roman", serif;
   }
 
-  /* line 50, ../../_sass/all.scss */
+  /* line 51, ../../_sass/all.scss */
   h1 {
     font-weight: bold;
     font-size: 2.25em;
     line-height: 1.33333em;
   }
 
-  /* line 55, ../../_sass/all.scss */
+  /* line 56, ../../_sass/all.scss */
   header[role=banner] {
     padding: 1em 1em 0;
   }
-  /* line 58, ../../_sass/all.scss */
+  /* line 59, ../../_sass/all.scss */
   header[role=banner] hgroup {
     position: relative;
   }
-  /* line 62, ../../_sass/all.scss */
+  /* line 63, ../../_sass/all.scss */
   header[role=banner] h1 {
     font-size: 2em;
     line-height: 1.5em;
     line-height: 2.25em;
   }
 
-  /* line 69, ../../_sass/all.scss */
+  /* line 70, ../../_sass/all.scss */
   .introduction {
     font-family: "Crimson Text", "Times New Roman", serif;
     color: #999;
   }
 
-  /* line 74, ../../_sass/all.scss */
+  /* line 75, ../../_sass/all.scss */
   .content {
     padding: 1em;
   }
 
-  /* line 78, ../../_sass/all.scss */
+  /* line 79, ../../_sass/all.scss */
   #search-container {
     background: #fcfcfc;
     border: 1px solid rgba(51, 51, 51, 0.125);
     border-width: 1px 0 0;
   }
 
-  /* line 84, ../../_sass/all.scss */
+  /* line 85, ../../_sass/all.scss */
   #search {
     padding: 1em 0 0;
   }
-  /* line 86, ../../_sass/all.scss */
+  /* line 87, ../../_sass/all.scss */
   #search fieldset {
     padding: 1em;
   }
-  /* line 90, ../../_sass/all.scss */
+  /* line 91, ../../_sass/all.scss */
   #search legend {
     color: #555;
   }
-  /* line 93, ../../_sass/all.scss */
+  /* line 94, ../../_sass/all.scss */
   #search .explanation {
     color: #555;
     margin: 0.5em 1em;
   }
 
-  /* line 99, ../../_sass/all.scss */
+  /* line 100, ../../_sass/all.scss */
   #item_map {
     height: 400px;
     border: 1px solid silver;
   }
 
-  /* line 104, ../../_sass/all.scss */
+  /* line 105, ../../_sass/all.scss */
   .olControlLayerSwitcher {
     /*background-color: #3c3b3a;*/
     background-color: #000;
@@ -204,20 +283,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     top: 42px;
     width: 20em;
   }
-  /* line 120, ../../_sass/all.scss */
+  /* line 121, ../../_sass/all.scss */
   .olControlLayerSwitcher .layersDiv {
     background-color: #000;
     margin: 1em !important;
     opacity: 0.8;
   }
 
-  /* line 128, ../../_sass/all.scss */
+  /* line 129, ../../_sass/all.scss */
   #map {
     height: 500px;
     border-top: 1px solid rgba(51, 51, 51, 0.25);
   }
 
-  /* line 134, ../../_sass/all.scss */
+  /* line 135, ../../_sass/all.scss */
   footer[role=contentinfo] {
     padding: 2em;
     overflow: hidden;
@@ -225,94 +304,94 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     text-align: center;
   }
 
-  /* line 140, ../../_sass/all.scss */
+  /* line 141, ../../_sass/all.scss */
   #uvalibrary {
     opacity: 0.4;
     width: 225px;
     margin: 20px auto;
   }
-  /* line 145, ../../_sass/all.scss */
+  /* line 146, ../../_sass/all.scss */
   #uvalibrary:link, #uvalibrary:visited {
     opacity: 0.4;
   }
-  /* line 149, ../../_sass/all.scss */
+  /* line 150, ../../_sass/all.scss */
   #uvalibrary:hover, #uvalibrary:focus {
     opacity: 0.6;
   }
-  /* line 152, ../../_sass/all.scss */
+  /* line 153, ../../_sass/all.scss */
   #uvalibrary:active {
     opacity: 0.8;
   }
-  /* line 156, ../../_sass/all.scss */
+  /* line 157, ../../_sass/all.scss */
   #uvalibrary img {
     max-width: 100%;
   }
 
-  /* line 161, ../../_sass/all.scss */
+  /* line 162, ../../_sass/all.scss */
   #scholarslab {
     width: 100px;
     margin: 20px auto;
     opacity: 0.4;
   }
-  /* line 167, ../../_sass/all.scss */
+  /* line 168, ../../_sass/all.scss */
   #scholarslab:link, #scholarslab:visited {
     opacity: 0.4;
   }
-  /* line 171, ../../_sass/all.scss */
+  /* line 172, ../../_sass/all.scss */
   #scholarslab:hover, #scholarslab:focus {
     opacity: 0.6;
   }
-  /* line 174, ../../_sass/all.scss */
+  /* line 175, ../../_sass/all.scss */
   #scholarslab:active {
     opacity: 0.8;
   }
-  /* line 178, ../../_sass/all.scss */
+  /* line 179, ../../_sass/all.scss */
   #scholarslab img {
     max-width: 100%;
   }
 }
 @media screen and (min-width: 720px) {
-  /* line 187, ../../_sass/all.scss */
+  /* line 188, ../../_sass/all.scss */
   body {
     margin: 0 40px;
     position: relative;
   }
 
-  /* line 192, ../../_sass/all.scss */
+  /* line 193, ../../_sass/all.scss */
   header[role=banner] {
     padding: 100px 2em 20px;
     overflow: hidden;
     *zoom: 1;
   }
-  /* line 196, ../../_sass/all.scss */
+  /* line 197, ../../_sass/all.scss */
   header[role=banner] h1 {
     font-size: 2.875em;
     line-height: 1.56522em;
     line-height: 1.5em;
   }
 
-  /* line 203, ../../_sass/all.scss */
+  /* line 204, ../../_sass/all.scss */
   .content {
     padding: 20px 2em;
   }
 
-  /* line 208, ../../_sass/all.scss */
+  /* line 209, ../../_sass/all.scss */
   #search fieldset {
     padding: 1em 2em;
   }
-  /* line 212, ../../_sass/all.scss */
+  /* line 213, ../../_sass/all.scss */
   #search .explanation {
     margin-left: 2em;
     margin-right: 2em;
   }
 
-  /* line 218, ../../_sass/all.scss */
+  /* line 219, ../../_sass/all.scss */
   .introduction {
     font-size: 1.125em;
     line-height: 1.33333em;
   }
 
-  /* line 222, ../../_sass/all.scss */
+  /* line 223, ../../_sass/all.scss */
   footer[role="contentinfo"] {
     position: absolute;
     top: 20px;
@@ -321,18 +400,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 100%;
   }
 
-  /* line 232, ../../_sass/all.scss */
+  /* line 233, ../../_sass/all.scss */
   #uvalibrary,
   #scholarslab {
     margin: 0;
   }
 
-  /* line 236, ../../_sass/all.scss */
+  /* line 237, ../../_sass/all.scss */
   #uvalibrary {
     float: left;
   }
 
-  /* line 240, ../../_sass/all.scss */
+  /* line 241, ../../_sass/all.scss */
   #scholarslab {
     float: right;
     margin-right: 30px;

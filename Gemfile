@@ -18,6 +18,9 @@ group :development do
   gem "awesome_print"
   gem "susy"
 
+  # deployment
+  gem "capistrano"
+
   # guard stuff
   gem 'guard'
   gem 'guard-bundler'
