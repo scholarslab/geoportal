@@ -142,6 +142,241 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-box-sizing: content-box;
 }
 
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+/* line 22, ../../_sass/_colorbox.scss */
+#cboxOverlay {
+  background: #fff;
+}
+
+/* line 23, ../../_sass/_colorbox.scss */
+#colorbox {
+  outline: 0;
+}
+
+/* line 24, ../../_sass/_colorbox.scss */
+#cboxTopLeft {
+  width: 25px;
+  height: 25px;
+  background: url(/images/border1.png) no-repeat 0 0;
+}
+
+/* line 25, ../../_sass/_colorbox.scss */
+#cboxTopCenter {
+  height: 25px;
+  background: url(/images/border1.png) repeat-x 0 -50px;
+}
+
+/* line 26, ../../_sass/_colorbox.scss */
+#cboxTopRight {
+  width: 25px;
+  height: 25px;
+  background: url(/images/border1.png) no-repeat -25px 0;
+}
+
+/* line 27, ../../_sass/_colorbox.scss */
+#cboxBottomLeft {
+  width: 25px;
+  height: 25px;
+  background: url(/images/border1.png) no-repeat 0 -25px;
+}
+
+/* line 28, ../../_sass/_colorbox.scss */
+#cboxBottomCenter {
+  height: 25px;
+  background: url(/images/border1.png) repeat-x 0 -75px;
+}
+
+/* line 29, ../../_sass/_colorbox.scss */
+#cboxBottomRight {
+  width: 25px;
+  height: 25px;
+  background: url(/images/border1.png) no-repeat -25px -25px;
+}
+
+/* line 30, ../../_sass/_colorbox.scss */
+#cboxMiddleLeft {
+  width: 25px;
+  background: url(/images/border2.png) repeat-y 0 0;
+}
+
+/* line 31, ../../_sass/_colorbox.scss */
+#cboxMiddleRight {
+  width: 25px;
+  background: url(/images/border2.png) repeat-y -25px 0;
+}
+
+/* line 32, ../../_sass/_colorbox.scss */
+#cboxContent {
+  background: #fff;
+  overflow: hidden;
+}
+
+/* line 33, ../../_sass/_colorbox.scss */
+.cboxIframe {
+  background: #fff;
+}
+
+/* line 34, ../../_sass/_colorbox.scss */
+#cboxError {
+  padding: 50px;
+  border: 1px solid #cccccc;
+}
+
+/* line 35, ../../_sass/_colorbox.scss */
+#cboxLoadedContent {
+  margin-bottom: 20px;
+}
+
+/* line 36, ../../_sass/_colorbox.scss */
+#cboxTitle {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  color: #999;
+}
+
+/* line 37, ../../_sass/_colorbox.scss */
+#cboxCurrent {
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+  color: #999;
+}
+
+/* line 38, ../../_sass/_colorbox.scss */
+#cboxLoadingOverlay {
+  background: white url(/images/loading.gif) no-repeat 5px 5px;
+}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+/* line 41, ../../_sass/_colorbox.scss */
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  width: auto;
+  background: none;
+}
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+/* line 44, ../../_sass/_colorbox.scss */
+#cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {
+  outline: 0;
+}
+
+/* line 46, ../../_sass/_colorbox.scss */
+#cboxSlideshow {
+  position: absolute;
+  bottom: 0px;
+  right: 42px;
+  color: #444;
+}
+
+/* line 47, ../../_sass/_colorbox.scss */
+#cboxPrevious {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  color: #444;
+}
+
+/* line 48, ../../_sass/_colorbox.scss */
+#cboxNext {
+  position: absolute;
+  bottom: 0px;
+  left: 63px;
+  color: #444;
+}
+
+/* line 49, ../../_sass/_colorbox.scss */
+#cboxClose {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  color: #444;
+}
+
+/*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+  See: http://jacklmoore.com/notes/ie-transparency-problems/
+*/
+/* line 63, ../../_sass/_colorbox.scss */
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}
+
+/*
+  The following provides PNG transparency support for IE6
+  Feel free to remove this and the /ie6/ directory if you have dropped IE6 support.
+*/
+/* line 71, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxTopLeft {
+  background: url(/images/ie6/borderTopLeft.png);
+}
+
+/* line 72, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxTopCenter {
+  background: url(/images/ie6/borderTopCenter.png);
+}
+
+/* line 73, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxTopRight {
+  background: url(/images/ie6/borderTopRight.png);
+}
+
+/* line 74, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxBottomLeft {
+  background: url(/images/ie6/borderBottomLeft.png);
+}
+
+/* line 75, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxBottomCenter {
+  background: url(/images/ie6/borderBottomCenter.png);
+}
+
+/* line 76, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxBottomRight {
+  background: url(/images/ie6/borderBottomRight.png);
+}
+
+/* line 77, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxMiddleLeft {
+  background: url(/images/ie6/borderMiddleLeft.png);
+}
+
+/* line 78, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxMiddleRight {
+  background: url(/images/ie6/borderMiddleRight.png);
+}
+
+/* line 87, ../../_sass/_colorbox.scss */
+.cboxIE6 #cboxTopLeft,
+.cboxIE6 #cboxTopCenter,
+.cboxIE6 #cboxTopRight,
+.cboxIE6 #cboxBottomLeft,
+.cboxIE6 #cboxBottomCenter,
+.cboxIE6 #cboxBottomRight,
+.cboxIE6 #cboxMiddleLeft,
+.cboxIE6 #cboxMiddleRight {
+  _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
+}
+
 @media screen {
   /* line 14, ../../../../.rvm/gems/ruby-1.9.3-p392@geoportal/gems/susy-1.0.5/sass/susy/_grid.scss */
   * {
