@@ -590,8 +590,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   /* line 156, ../../_sass/all.scss */
   #results .result h2 {
     margin-top: 0;
+    border: none;
   }
-  /* line 160, ../../_sass/all.scss */
+  /* line 161, ../../_sass/all.scss */
   #results .result .keywords {
     color: #777;
     font-size: 0.875em;
@@ -599,18 +600,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     line-height: 2.25em;
   }
 
-  /* line 168, ../../_sass/all.scss */
+  /* line 169, ../../_sass/all.scss */
   .utils {
     margin: 1.5em 0 0;
     text-align: right;
   }
-  /* line 172, ../../_sass/all.scss */
+  /* line 173, ../../_sass/all.scss */
   .utils span + span:before {
     content: "· ";
     color: #999;
   }
 
-  /* line 178, ../../_sass/all.scss */
+  /* line 179, ../../_sass/all.scss */
   footer[role=contentinfo] {
     padding: 2em;
     overflow: hidden;
@@ -618,94 +619,94 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     text-align: center;
   }
 
-  /* line 184, ../../_sass/all.scss */
+  /* line 185, ../../_sass/all.scss */
   #uvalibrary {
     opacity: 0.4;
     width: 225px;
     margin: 20px auto;
   }
-  /* line 189, ../../_sass/all.scss */
+  /* line 190, ../../_sass/all.scss */
   #uvalibrary:link, #uvalibrary:visited {
     opacity: 0.4;
   }
-  /* line 193, ../../_sass/all.scss */
+  /* line 194, ../../_sass/all.scss */
   #uvalibrary:hover, #uvalibrary:focus {
     opacity: 0.6;
   }
-  /* line 196, ../../_sass/all.scss */
+  /* line 197, ../../_sass/all.scss */
   #uvalibrary:active {
     opacity: 0.8;
   }
-  /* line 200, ../../_sass/all.scss */
+  /* line 201, ../../_sass/all.scss */
   #uvalibrary img {
     max-width: 100%;
   }
 
-  /* line 205, ../../_sass/all.scss */
+  /* line 206, ../../_sass/all.scss */
   #scholarslab {
     width: 100px;
     margin: 20px auto;
     opacity: 0.4;
   }
-  /* line 211, ../../_sass/all.scss */
+  /* line 212, ../../_sass/all.scss */
   #scholarslab:link, #scholarslab:visited {
     opacity: 0.4;
   }
-  /* line 215, ../../_sass/all.scss */
+  /* line 216, ../../_sass/all.scss */
   #scholarslab:hover, #scholarslab:focus {
     opacity: 0.6;
   }
-  /* line 218, ../../_sass/all.scss */
+  /* line 219, ../../_sass/all.scss */
   #scholarslab:active {
     opacity: 0.8;
   }
-  /* line 222, ../../_sass/all.scss */
+  /* line 223, ../../_sass/all.scss */
   #scholarslab img {
     max-width: 100%;
   }
 }
 @media screen and (min-width: 720px) {
-  /* line 231, ../../_sass/all.scss */
+  /* line 232, ../../_sass/all.scss */
   body {
     margin: 0 40px;
     position: relative;
   }
 
-  /* line 236, ../../_sass/all.scss */
+  /* line 237, ../../_sass/all.scss */
   header[role=banner] {
     padding: 100px 2em 20px;
     overflow: hidden;
     *zoom: 1;
   }
-  /* line 240, ../../_sass/all.scss */
+  /* line 241, ../../_sass/all.scss */
   header[role=banner] h1 {
     font-size: 2.875em;
     line-height: 1.56522em;
     line-height: 1.5em;
   }
 
-  /* line 247, ../../_sass/all.scss */
+  /* line 248, ../../_sass/all.scss */
   .content {
     padding: 20px 2em;
   }
 
-  /* line 252, ../../_sass/all.scss */
+  /* line 253, ../../_sass/all.scss */
   #search fieldset {
     padding: 1em 2em;
   }
-  /* line 256, ../../_sass/all.scss */
+  /* line 257, ../../_sass/all.scss */
   #search .explanation {
     margin-left: 2em;
     margin-right: 2em;
   }
 
-  /* line 262, ../../_sass/all.scss */
+  /* line 263, ../../_sass/all.scss */
   .introduction {
     font-size: 1.125em;
     line-height: 1.33333em;
   }
 
-  /* line 266, ../../_sass/all.scss */
+  /* line 267, ../../_sass/all.scss */
   footer[role="contentinfo"] {
     position: absolute;
     top: 20px;
@@ -714,18 +715,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     width: 100%;
   }
 
-  /* line 276, ../../_sass/all.scss */
+  /* line 277, ../../_sass/all.scss */
   #uvalibrary,
   #scholarslab {
     margin: 0;
   }
 
-  /* line 280, ../../_sass/all.scss */
+  /* line 281, ../../_sass/all.scss */
   #uvalibrary {
     float: left;
   }
 
-  /* line 284, ../../_sass/all.scss */
+  /* line 285, ../../_sass/all.scss */
   #scholarslab {
     float: right;
     margin-right: 30px;
