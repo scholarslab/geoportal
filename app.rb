@@ -69,11 +69,12 @@ helpers do
   end
 
   # rails-style link_to
-  def link_to(url, text=Url, opts={})
+  def link_to(url, text=url, opts={})
     attributes = ""
     opts.each {|key, value| attributes << key.to_s << "=\"" << value << "\" "}
     "<a href=\"#{url}\" #{attributes}>#{text}</a>"
   end
+
 end
 
 get '/' do

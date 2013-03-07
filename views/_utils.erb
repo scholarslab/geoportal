@@ -5,16 +5,13 @@
     <% @layers = @layers + layer + ',' %>
 <% end %>
   <span class="kml-link">
-    <a href="<%= kml_url(@layers.chop) %>">Google Earth
-      <img alt="Google Earth Link" src="/images/ge.gif" />
-    </a>
+    <%= link_to(kml_url(@layers.chop), 'Google Earth') %>
   </span>
 <% end %>
 
   <% unless @meta.catalog_link.nil? %>
     <span class="catalog-link">
-    <a href="<%= cat_url(@item_id) %>">Virgo</a>
-    <img alt="catalog link" src="/images/browser.png" />
+    <%= link_to(cat_url(@meta.catalog_link.content), 'Virgo') %>
   </span>
 <% end %>
 </div>
