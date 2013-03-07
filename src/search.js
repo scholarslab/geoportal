@@ -5,7 +5,7 @@ $(document).ready(function(){
   $('#more-link').click(function(){
 
     // Replace button with loading animation
-    $(this).html('<img src="/images/loader.gif"/>');
+    $(this).html('<img src="/images/loading.gif"/>');
 
     // Retrieve next page via Ajax and append content to current page
     $.get($(this).attr('href'), function(html) {

@@ -11,23 +11,29 @@
     <p>No results found.</p>
 <% end %>
   <hr/>
-  <div id="search_results">
+  <div id="results">
     <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
       <% @item_id = item.xpath('.//id').first.content %>
-      <% @meta = get_item(@meta_url + @item_id) %>
-      <% @meta.extend Geoportal::Result %>
+    <% @meta = get_item(@meta_url + @item_id) %>
+    <% @meta.extend Geoportal::Result %>
+    <div class="result">
       <h2>
         <a href="/items/<%= @item_id %>"><%= @meta.title %></a>
       </h2>
       <p>Keywords:
       <% @meta.description.each do |kw| %>
         <span class="keyword"><%= kw.text.strip %></span>
-      <% end %>
-    </p>
-
-    <% unless @meta.map_link.nil? %>
-      <%= erb :_utils %>
     <% end %>
+      </p>
+
+      <% unless @meta.map_link.nil? %>
+        <%= erb :_utils %>
+    <% end %>
+    </div>
   <% end %>
+
+  <div id="page-nav">
+    <a href="/items?" id="more-link">View More results</a>
+  </div>
   </div>
 </div>
