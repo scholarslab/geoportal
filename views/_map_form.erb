@@ -2,10 +2,23 @@
 <form action="/items" id="search" name="search">
   <fieldset>
       <legend>Search for Geospatial Data</legend>
-    <input name="kw" placeholder="Keyword Search Terms" type="search" results="5" autosave="uva_gp_kw">
+      <input name="q" placeholder="Keyword Search Terms" type="search" results="5" autosave="uva_gp_kw">
+
+      <input type="hidden" name="westBL" id="ll-lon">
+      <input type="hidden" name="southBL" id="ur-lon">
+      <input type="hidden" name="eastBL" id="ll-lat">
+      <input type="hidden" name="northBL" id="ur-lat">
+      <!-- magic -->
+      <input type="hidden" name="s" value="1">
+      <input type="hidden" name="c" value="25">
+
     <input type="submit" value="Search">
 </fieldset>
 <p class="explanation"><b>Optional</b>: Click and drag an area on the map to focus your search.</p>
   <div id="map"></div>
 </form>
 </div>
+
+<% content_for :jsfooter do %>
+<script>geoportal.searchMap('map');</script>
+<% end %>

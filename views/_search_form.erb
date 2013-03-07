@@ -1,6 +1,8 @@
 <form action="/items" id="search" name="search">
   <legend>Search for Geospatial Data</legend>
-  <input name="kw" placeholder="Keyword Search Terms" type="search" results="5" autosave="uva_gp_kw">
+  <input name="q" placeholder="Keyword Search Terms" type="search" results="5" autosave="uva_gp_kw">
+  <input type="hidden" name="s" value="1">
+  <input type="hidden" name="c" value="25">
   <input type="submit" value="Search">
 </form>
 
