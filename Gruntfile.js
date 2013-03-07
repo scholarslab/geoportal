@@ -37,19 +37,13 @@ module.exports = function(grunt) {
         sub: true,
         undef: true,
         eqnull: true,
-        browser: true
-      },
-      globals: {
-        jQuery: true,
-        jasmine : false,
-        describe : false,
-        beforeEach : false,
-        expect : false,
-        it : false,
-        spyOn : false
+        browser: true,
+        globals: {
+          jQuery: false,
+          jasmine: true
+        }
       }
     },
-
     watch: {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint', 'uglify']
@@ -67,6 +61,7 @@ module.exports = function(grunt) {
       squeeze: {dead_code: false},
       codegen: {quote_keys: true},
       options: {
+        sourceMappingURL: '/js/source-map.js',
         sourceMap: 'public/js/source-map.js',
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
@@ -75,7 +70,7 @@ module.exports = function(grunt) {
           '<%= meta.dest %><%= pkg.name %>.min.js': ['<%= meta.dest %><%= pkg.name %>.js']
         }
       }
-    },
+    }
   });
 
   grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
