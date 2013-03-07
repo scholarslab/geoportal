@@ -7,6 +7,10 @@
 // Screen
 @media screen {
 
+  * {
+    word-wrap: break-word;
+  }
+
   @include border-box-sizing;
 
   html {
@@ -42,6 +46,12 @@
     &:active {
       color: #036;
     }
+
+    h1 &,
+    h2 &,
+    h3 & {
+      text-decoration:none;
+    }
   }
 
   #{headings(1,3)} {
@@ -52,6 +62,27 @@
   h1 {
     font-weight: bold;
     @include adjust-font-size-to(36px);
+  }
+
+  h2 {
+    @include adjust-font-size-to(24px);
+    @include leader(1);
+    border-bottom: 1px dotted #ccc;
+  }
+
+  h3 {
+    @include adjust-font-size-to(18px);
+    color: #999;
+    @include leader(1);
+    @include trailer(0);
+
+    & + * {
+      margin-top:0 !important;
+    }
+  }
+
+  p {
+    @include rhythm(1);
   }
 
   header[role=banner] {
@@ -75,6 +106,13 @@
 
   .content {
     padding: 1em;
+
+    #search {
+      background: #fcfcfc;
+      border: 1px solid rgba(#333, 0.125);
+      padding:1em;
+      margin:1em 0;
+    }
   }
 
   #search-container {
@@ -107,6 +145,34 @@
     height: 500px;
     border-top: 1px solid rgba(#333, 0.25);
 
+  }
+
+  #results {
+    clear:both;
+    .result {
+      padding: 0 0 rhythm(1) 0;
+      border-top: 1px dotted #ccc;
+
+      h2 {
+        margin-top:0;
+      }
+
+      .keywords {
+        color: #777;
+        @include adjust-font-size-to(14px);
+        @include adjust-leading-to(1.5);
+      }
+    }
+  }
+
+  .utils {
+    margin: rhythm(1) 0 0;
+    text-align:right;
+
+    span + span:before {
+      content: "· ";
+      color: #999;
+    }
   }
 
   footer[role=contentinfo] {

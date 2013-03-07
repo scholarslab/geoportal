@@ -7,20 +7,27 @@
   <div id="item_map"></div>
   <div id="layerswitcher" class="olControlLayerSwitcher"></div>
 
+  <div id="abstract">
+    <h2>Abstract</h2>
+    <p><%= @doc.abstract.gsub(/\n/, '<br/>') %></p>
+  </div>
+
   <div id="categories">
     <h2>Categories</h2>
-    <% @doc.categories.each do |category| %>
+    <p><% @doc.categories.each do |category| %>
       <% search_string = "/items?q=#{category.content}&s=1&c=5&dt=3000" %>
        <a href="<%= search_string %>"><%= category.content %></a>
     <% end %>
+    </p>
   </div>
 
   <div id="keywords">
   <h2>Keywords</h2>
-  <% @doc.keywords.each do |keyword| %>
+  <p><% @doc.keywords.each do |keyword| %>
     <% search_string = "/items?q=#{keyword.content}&s=1&c=5&dt=3000" %>
     <a href="<%= search_string %>"><%= keyword.content %></a>
   <% end %>
+  </p>
   </div>
 
   <% unless @doc.web_service.first.nil? %>
@@ -33,20 +40,24 @@
   <% layer_list = @doc.layers.to_a.join(',') %>
 
   <div id="arcgis_connection">
-    <h3>ArcGIS Connection</h3>
-    <p><strong>WMS</strong>: <a href="<%= wms_link %>"><%= wms_link %></a></p>
-    <p><strong>WFS</strong>: <a href="<%= wfs_link %>"><%= wfs_link %></a></p>
+    <h2>ArcGIS Connection</h2>
+    <h3>WMS</h3>
+    <p><a href="<%= wms_link %>"><%= wms_link %></a></p>
+    <h3>WFS</h3>
+    <p><a href="<%= wfs_link %>"><%= wfs_link %></a></p>
   </div>
 
   <div id="neatline_connection">
-    <h3>Neatline Connection</h3>
-    <p><strong>WMS Address</strong>: <%= "#{@service_base}/wms" %><p>
-    <p><strong>Layers</strong>: <%= layer_list %></p>
+    <h2>Neatline Connection</h2>
+    <h3>WMS Address</h3>
+    <p><%= "#{@service_base}/wms" %><p>
+    <h3>Layers</h3>
+    <p><%= layer_list %></p>
   </div>
 
   <div id="layers">
 
-    <h3>Individual Layers</h3>
+    <h2>Individual Layers</h2>
 
     <% @doc.layers.each do |layer| %>
       <p>
@@ -62,10 +73,6 @@
   </div>
 <% end %>
 
-  <div id="abstract">
-    <h2>Abstract</h2>
-    <p><%= @doc.abstract.gsub(/\n/, '<br/>') %></p>
-  </div>
 </div>
 
 <% content_for :jsfooter do %>

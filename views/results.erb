@@ -1,16 +1,16 @@
 <div class="content">
   <h1>Results</h1>
 
-  <%= erb :_search_form %>
-
   <% if @search.hits != 0 %>
-    <p>Search for <strong><%#= unescape(@search.search.query) %></strong>
+    <p>Search for &#8216;<strong><%#= unescape(@search.search.query) %></strong>&#8217;
   returned <span id="hits"><%= @search.hits %></span> results.</p>
 
 <% else %>
     <p>No results found.</p>
 <% end %>
-  <hr/>
+
+  <%= erb :_search_form %>
+
   <div id="results">
     <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
       <% @item_id = item.xpath('.//id').first.content %>
@@ -20,10 +20,10 @@
       <h2>
         <a href="/items/<%= @item_id %>"><%= @meta.title %></a>
       </h2>
-      <p>Keywords:
+      <p class="keywords"><strong>Keywords</strong>:
       <% @meta.description.each do |kw| %>
         <span class="keyword"><%= kw.text.strip %></span>
-    <% end %>
+      <% end %>
       </p>
 
       <% unless @meta.map_link.nil? %>
