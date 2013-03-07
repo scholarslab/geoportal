@@ -7,6 +7,23 @@
   <div id="item_map"></div>
   <div id="layerswitcher" class="olControlLayerSwitcher"></div>
 
+      <div id="layers">
+
+    <h2>Individual Layers</h2>
+
+    <% @doc.layers.each do |layer| %>
+      <p>
+      <strong><%= layer.content %></strong> (
+        <%= link_to(pdf_url(layer), 'PDF') %>,
+        <%= link_to(kml_url(layer), 'KML') %>,
+        <%= link_to(jpeg_url(layer), 'JPEG') %>,
+        <%= link_to(ol_url(layer), 'Web Map', :class => 'cboxElement ajax') %>
+        )
+      </p>
+  <% end %>
+
+  </div>
+
   <div id="abstract">
     <h2>Abstract</h2>
     <p><%= @doc.abstract.gsub(/\n/, '<br/>') %></p>
@@ -55,22 +72,6 @@
     <p><%= layer_list %></p>
   </div>
 
-  <div id="layers">
-
-    <h2>Individual Layers</h2>
-
-    <% @doc.layers.each do |layer| %>
-      <p>
-      <strong><%= layer.content %></strong> (
-        <%= link_to(pdf_url(layer), 'PDF') %>,
-        <%= link_to(kml_url(layer), 'KML') %>,
-        <%= link_to(jpeg_url(layer), 'JPEG') %>,
-        <%= link_to(ol_url(layer), 'Web Map', :class => 'cboxElement ajax') %>
-        )
-      </p>
-  <% end %>
-
-  </div>
 <% end %>
 
 </div>
