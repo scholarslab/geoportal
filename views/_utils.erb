@@ -1,13 +1,10 @@
 <div class="utils">
   <% unless @meta.layers.first.nil? %>
-    <% @layers = '' %>
-  <% @meta.layers.each do |layer| %>
-    <% @layers = @layers + layer + ',' %>
-<% end %>
-  <span class="kml-link">
-    <%= link_to(kml_url(@layers.chop), 'Google Earth') %>
-  </span>
-<% end %>
+    <% @layers = @meta.layers.to_a.join(',')%>
+    <span class="kml-link">
+      <%= link_to(kml_url(@layers), 'Google Earth') %>
+    </span>
+  <% end %>
 
   <% unless @meta.catalog_link.nil? %>
     <span class="catalog-link">
