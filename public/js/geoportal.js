@@ -67,14 +67,16 @@ Geoportal.map = (function() {
   map.addControl(control);
   map.addLayer(mrk);
 
-
   if (!map.getCenter()) {
     map.setCenter(slab);
     map.zoomToMaxExtent();
   }
 
 
+
 })(Geoportal);
+
+/*global $:false */
 
 // Avoid `console` errors in browsers that lack a console.
 (function() {
@@ -100,3 +102,10 @@ Geoportal.map = (function() {
 }());
 
 // Place any jQuery/helper plugins in here.
+
+
+
+/*global $:false, jQuery:false */
+$(document).ready(function() {
+  $('.tooltip').tooltip('show');
+});
