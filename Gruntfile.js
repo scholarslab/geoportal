@@ -10,6 +10,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-smushit');
 
   // project configuration
   grunt.initConfig({
@@ -17,6 +18,7 @@ module.exports = function(grunt) {
     meta: {
       src: 'src/**/*.js',
       dest: 'public/js/',
+      image_dest: 'public/images/',
       specs: 'spec/**/*Spec.js',
       banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("m/d/yyyy") %>\n' +
         '* <%= pkg.homepage %>\n' +
@@ -69,6 +71,11 @@ module.exports = function(grunt) {
         files: {
           '<%= meta.dest %><%= pkg.name %>.min.js': ['<%= meta.dest %><%= pkg.name %>.js']
         }
+      }
+    },
+    smushit: {
+      path: {
+        src: '<%= meta.image_dest %>'
       }
     }
   });
