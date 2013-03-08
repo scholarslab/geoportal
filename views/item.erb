@@ -32,7 +32,7 @@
   <div id="categories">
     <h2>Categories</h2>
     <p><% @doc.categories.each do |category| %>
-      <% search_string = "/items?q=#{category.content}&s=1&c=5&dt=3000" %>
+      <% search_string = "/items?q=#{category.content}&s=1&c=25&dt=3000" %>
        <a href="<%= search_string %>"><%= category.content %></a>
     <% end %>
     </p>
@@ -41,7 +41,7 @@
   <div id="keywords">
   <h2>Keywords</h2>
   <p><% @doc.keywords.each do |keyword| %>
-    <% search_string = "/items?q=#{keyword.content}&s=1&c=5&dt=3000" %>
+    <% search_string = "/items?q=#{keyword.content}&s=1&c=25&dt=3000" %>
     <a href="<%= search_string %>"><%= keyword.content %></a>
   <% end %>
   </p>
