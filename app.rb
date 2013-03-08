@@ -44,6 +44,10 @@ helpers do
     SiteConfig.geoserver_url + "/wms/kml?layers=#{layers}"
   end
 
+  def kml_url2(workspace, layers)
+    "#{SiteConfig.geoserver_url}/#{workspace}/wms/kml?layers=#{layers}"
+  end
+
   def pdf_url(layers)
     content_url(layers, 'application/pdf')
   end

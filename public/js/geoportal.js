@@ -131,13 +131,6 @@ var console = console || {};
 
 $(document).ready(function(){
 
-  // get the link from the .kml-link
-  $('.kml-link a').click(function(event) {
-      event.preventDefault();
-      $.post(this.href);
-      //console.log(this['href']);
-  });
-
   // Load additional results when users click the "more results" button
   $('#more-link').click(function(){
 

@@ -16,7 +16,7 @@
       <strong><%= layer.content %></strong> (
         <%= link_to(pdf_url(layer), 'PDF') %>,
         <%= link_to(kml_url(layer), 'KML') %>,
-        <%= link_to(jpeg_url(layer), 'JPEG') %>,
+        <%= link_to(jpeg_url(layer), 'JPEG', :class => 'ajax') %>,
         <%= link_to(ol_url(layer), 'Web Map', :class => 'cboxElement ajax') %>
         )
       </p>

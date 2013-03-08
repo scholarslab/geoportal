@@ -1,8 +1,10 @@
 <div class="utils">
   <% unless @meta.layers.first.nil? %>
-    <% @layers = @meta.layers.map{|node|node.text} %>
+    <% @layers = @meta.layers.map{|node|/(.*)\:(.*)/.match(node.text)[2]} %>
+    <% workspace = /(.*)\:/.match(@meta.layers.first)[1] %>
+    <% list = @layers.join(',').chomp %>
     <span class="kml-link">
-      <%= link_to(kml_url(@layers.join(',').chomp ), 'Google Earth') %>
+      <%= link_to(kml_url2(workspace,list), 'Google Earth') %>
     </span>
   <% end %>
 
