@@ -1,8 +1,8 @@
 <div class="utils">
   <% unless @meta.layers.first.nil? %>
-    <% @layers = @meta.layers.to_a.join(',') %>
+    <% @layers = @meta.layers.map{|node|node.text} %>
     <span class="kml-link">
-      <%= link_to(kml_url(@layers.chomp), 'Google Earth') %>
+      <%= link_to(kml_url(@layers.join(',').chomp ), 'Google Earth') %>
     </span>
   <% end %>
 
