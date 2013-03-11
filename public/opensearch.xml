@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns:geo="http://a9.com/-/opensearch/extensions/geo/1.0/" xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>GeoSearch</ShortName>
+  <Description>Search the UVA Geoportal</Description>
+  <Tags>geo location kml geosearch wms wfs</Tags>
+  <Contact>scholarslab@virginia.edu</Contact>
+  <SyndicationRight>open</SyndicationRight>
+  <Language>en-us</Language>
+  <Image width="16" type="image/x-icon" height="16">
+    http://libsvr35.lib.virginia.edu/favicon.ico
+  </Image>
+  <Url type="text/html" template="http://libsvr35.lib.virginia.edu/items?query={searchTerms}&amp;c={count?}&amp;s={startPage?}"/>
+</OpenSearchDescription>
