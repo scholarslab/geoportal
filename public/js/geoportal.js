@@ -171,7 +171,7 @@ $(document).ready(function(){
       // If the offset of the next page is less than the total number of hits,
       // there is another page of results
       if(parseInt(nxt[1], 10) < parseInt($('#hits').text(), 10)) {
-        nxt[1] = 's=' + (parseInt(nxt[1], 10) + 5);					
+        nxt[1] = 's=' + (parseInt(nxt[1], 10) + 25);					
       } else {
         $(this).hide();
       }
