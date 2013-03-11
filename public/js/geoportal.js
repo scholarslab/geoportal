@@ -10,6 +10,7 @@ var geoportal = (function() {
   //privates
   var map;
   var slab = new OpenLayers.LonLat(-8739214.39812,4584593.40392);
+  var bbox = new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34);
   OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
   OpenLayers.Util.onImageLoadErrorColor = "transparent";
   OpenLayers.ImgPath = "http://js.mapbox.com/theme/dark/";
@@ -36,6 +37,7 @@ var geoportal = (function() {
         projection: new OpenLayers.Projection("EPSG:900913"),
         units: 'm',
         maxResolution: 'auto',
+        maxExtent: bbox,
         controls: default_controls,
         layers: [
           new OpenLayers.Layer.OSM()
