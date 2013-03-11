@@ -19,7 +19,8 @@ var geoportal = (function() {
     new OpenLayers.Control.Attribution(),
     new OpenLayers.Control.PanZoomBar(),
     new OpenLayers.Control.ScaleLine(),
-    new OpenLayers.Control.MousePosition()
+    new OpenLayers.Control.MousePosition(),
+    new OpenLayers.Control.Navigation()
   ];
 
   function addBoxControl(control) {
@@ -37,6 +38,7 @@ var geoportal = (function() {
         projection: new OpenLayers.Projection("EPSG:900913"),
         units: 'm',
         maxResolution: 'auto',
+        numZoomLevels: 20,
         maxExtent: bbox,
         controls: default_controls,
         layers: [
@@ -84,17 +86,21 @@ var geoportal = (function() {
       map.addControl(control);
       map.addLayer(mrk);
 
-      if(!map.getCenter()) {
-        map.setCenter(slab);
-        map.zoomToMaxExtent();
-      }
+      map.setCenter(slab);
+      map.zoomToMaxExtent();
+
+      //if(!map.getCenter()) {
+        //map.setCenter(slab);
+        //map.zoomToMaxExtent();
+      //}
 
       return map;
     },
 
     // displays map elements on an item page
     itemMap: function(mapElement, layers) {
-
+      map = new OpenLayers.Map(mapElement, {
+      });
     }
   };
 }());
@@ -126,7 +132,13 @@ var geoportal = (function() {
 
 // Place any jQuery/helper plugins in here.
 
-
+//$(document).ready(function(){
+  //$(".ajax").colorbox({
+    //iframe: true,
+    //width: "80%",
+    //height: "80%"
+  //});
+//});
 
 /*global $:false, jQuery:false */
 var console = console || {};
