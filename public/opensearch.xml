@@ -9,5 +9,5 @@
   <Image width="16" type="image/x-icon" height="16">
     http://libsvr35.lib.virginia.edu/favicon.ico
   </Image>
-  <Url type="text/html" template="http://libsvr35.lib.virginia.edu/items?query={searchTerms}&amp;c={count?}&amp;s={startPage?}"/>
+  <Url type="text/html" template="http://libsvr35.lib.virginia.edu/items?q={searchTerms}&amp;c={count?}&amp;s={startPage?}"/>
 </OpenSearchDescription>
