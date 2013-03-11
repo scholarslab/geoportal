@@ -112,7 +112,6 @@ get '/items/?' do
 
   @meta_url = meta_url
 
-
   erb :results
 end
 

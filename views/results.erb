@@ -2,7 +2,7 @@
   <h1>Results</h1>
 
   <% if @search.hits != 0 %>
-    <p>Search for &#8216;<strong><%#= unescape(@search.search.query) %></strong>&#8217;
+    <p>Search for &#8216;<strong><%= unescape(@search.query) %></strong>&#8217;
   returned <span id="hits"><%= @search.hits %></span> results.</p>
 
 <% else %>
@@ -18,7 +18,7 @@
     <% @meta.extend Geoportal::Result %>
     <div class="result">
       <h2>
-        <a href="/items/<%= @item_id %>"><%= @meta.title %></a>
+        <%= link_to("/items/#{@item_id}", @meta.title) %>
       </h2>
       <p class="keywords"><strong>Keywords</strong>:
       <% @meta.description.each do |kw| %>
@@ -32,8 +32,9 @@
     </div>
   <% end %>
 
-    <div id="page-nav">
-      <a href="/items?" id="more-link">View More results</a>
+  <div id="page-nav">
+    <% search_path = "/items?q=#{@search.query}&s=#{@search.start + @search.count}&c=#{@search.count}&#{@search.search_str}" %>
+    <%= link_to(search_path, 'View more results', :rel => 'prefetch', :id => 'more-link') %>
     </div>
   </div>
 </div>

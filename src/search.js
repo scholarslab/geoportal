@@ -30,6 +30,7 @@ $(document).ready(function(){
       // there is another page of results
       if(parseInt(nxt[1], 10) < parseInt($('#hits').text(), 10)) {
         nxt[1] = 's=' + (parseInt(nxt[1], 10) + 25);					
+        console.log(nxt);
       } else {
         $(this).hide();
       }
