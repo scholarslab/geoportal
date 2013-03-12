@@ -4,11 +4,11 @@
   <h1><%= @doc.title %></h1>
 
   <select id="layer-switcher">
-    <% @doc.layers.each do |layer| %>
+    <% @doc.layers.each_with_index do |layer| %>
       <%# TODO: extract to method %>
     <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
-    <option value="<%= clean_layer %>"><%= clean_layer %></option>
-  <% end %>
+    <option value="<%= clean_layer %>" ><%= clean_layer %></option>
+    <% end %>
   </select>
 
   <div id="item_map"></div>
@@ -113,8 +113,7 @@ var map;
       new OpenLayers.Control.Navigation(),
       new OpenLayers.Control.PanZoomBar(),
       new OpenLayers.Control.ScaleLine(),
-      new OpenLayers.Control.MousePosition(),
-      new OpenLayers.Control.LayerSwitcher()
+      new OpenLayers.Control.MousePosition()
     ]
   });
 
@@ -127,27 +126,24 @@ var map;
 
   <% @doc.layers.each do |layer| %>
     <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
-
     var <%= clean_layer %> = new OpenLayers.Layer.WMS(
       "<%= clean_layer %>",  "<%= SiteConfig.geoserver_url + '/wms' %>",
       { layers: "<%= layer.text %>", transparent: true, format: 'image/gif' },
-      { isBaseLayer: false }
+      { isBaseLayer: false, visibility: false }
     );
 
     map.addLayer(<%= clean_layer %>);
   <% end %>
 
   map.zoomToExtent(bounds);
-  console.log('map', map.maxExtent);
-  console.log('bounds', bounds);
 
-  var activeLayer = null;
-
+  // fix this
+  var first =$("#layer-switcher option:first").val();
+  var activeLayer = map.getLayersByName(first)[0];
+  activeLayer.setVisibility(true);
 
   $('#layer-switcher').change(function() {
     var layer = map.getLayersByName(this.value)[0];
-
-    console.log('layer', map.getLayersByName(this.value));
 
     if(activeLayer != null) {
       activeLayer.setVisibility(false);
@@ -155,9 +151,9 @@ var map;
 
     layer.setVisibility(true);
     activeLayer = layer;
-    console.log('activeLayer', activeLayer);
 
   });
+
 
 })();
 
