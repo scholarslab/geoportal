@@ -68,8 +68,12 @@ helpers do
     SiteConfig.library_catalog + item
   end
 
-  def link_helper(url, text)
-    "<a href='#{url}'>#{text}</a>"
+  def layer2variable(layer)
+    "_" + layer
+  end
+
+  def clean_layer(layer)
+     /\:(.*)/.match(layer.text)[1].to_s
   end
 
   # rails-style link_to
@@ -77,6 +81,10 @@ helpers do
     attributes = ""
     opts.each {|key, value| attributes << key.to_s << "=\"" << value << "\" "}
     "<a href=\"#{url}\" #{attributes}>#{text}</a>"
+  end
+
+  def nl2br(text)
+    text.gsub(/\n/, '<br/>')
   end
 
 end
@@ -126,6 +134,7 @@ get '/items/:id/?' do
 
   # TODO: refactor to Item object
   @workspace =  /(.*)\:/.match(@doc.layers.first)[1]
+  @service_base = SiteConfig.geoserver_url + "/" + @workspace 
 
   # Yeah...the view
   erb :item
