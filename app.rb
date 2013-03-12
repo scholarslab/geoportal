@@ -87,6 +87,12 @@ helpers do
     text.gsub(/\n/, '<br/>')
   end
 
+  def clean_text(text)
+    replacements = [ ["\n", "* // *"], ["<br/>", "<br/>"] ]
+    replacements.each {|replacement| text.gsub!(replacement[0], replacement[1])}
+  end
+
+
   def truncate(text, length = 100, end_string = ' ...')
     words = text.split()
     words = words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
