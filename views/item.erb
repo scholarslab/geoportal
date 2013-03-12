@@ -4,7 +4,7 @@
   <h1><%= @doc.title %></h1>
 
   <select id="layer-switcher">
-    <% @doc.layers.each_with_index do |layer| %>
+    <% @doc.layers.each do |layer| %>
       <%# TODO: extract to method %>
     <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
     <option value="<%= clean_layer %>" ><%= clean_layer %></option>
