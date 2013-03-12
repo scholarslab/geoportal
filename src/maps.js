@@ -31,13 +31,15 @@ var geoportal = (function() {
       var mrk = new OpenLayers.Layer.Boxes('Bbox marker');
       var control = new OpenLayers.Control();
 
+      console.log('bbox', bbox);
+
       map = new OpenLayers.Map({
         div: mapElement,
         projection: new OpenLayers.Projection("EPSG:900913"),
         units: 'm',
         maxResolution: 'auto',
         numZoomLevels: 20,
-        maxExtent: bbox,
+        //maxExtent: bbox,
         controls: default_controls,
         layers: [
           new OpenLayers.Layer.OSM()
