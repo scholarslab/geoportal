@@ -44,9 +44,7 @@ var geoportal = (function() {
         maxExtent: bbox,
         controls: default_controls,
         layers: [
-          new OpenLayers.Layer.OSM("osm", {
-            projection: target_projection
-          })
+          new OpenLayers.Layer.OSM("osm")
         ]
       });
 
