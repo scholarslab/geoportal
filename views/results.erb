@@ -23,7 +23,8 @@
       <p class="abstract"><%= truncate(nl2br(@meta.abstract.text)) %></p>
       <p class="keywords"><strong>Keywords</strong>:
       <% @meta.description.each do |kw| %>
-        <span class="keyword"><%= kw.text.strip %></span>
+        <% search_string = "/items?q=#{kw.content.strip}&s=1&c=25&dt=3000" %>
+        <span class="keyword"><%= link_to(search_string, kw.text.strip) %></span>
       <% end %>
       </p>
 
