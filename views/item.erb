@@ -106,6 +106,7 @@ var map;
     projection: new OpenLayers.Projection("EPSG:4326"),
     displayProjection: new OpenLayers.Projection("EPSG:4326"),
     maxExtent: bounds,
+    restrictedExtent: bounds,
     maxResolution: 'auto',
     controls: [
       new OpenLayers.Control.Attribution(),
@@ -115,6 +116,13 @@ var map;
       new OpenLayers.Control.MousePosition()
     ]
   });
+
+  var wms = new OpenLayers.Layer.WMS(
+  "OpenLayers WMS", 
+  "http://vmap0.tiles.osgeo.org/wms/vmap0?",
+  {layers: 'basic'}
+  );
+  map.addLayer(wms);
 
   <% @doc.layers.each do |layer| %>
     <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
@@ -128,7 +136,9 @@ var map;
     map.addLayer(<%= clean_layer %>);
   <% end %>
 
-  map.zoomToMaxExtent();
+  map.zoomToExtent(bounds);
+  console.log('map', map.maxExtent);
+  console.log('bounds', bounds);
 
   var activeLayer = null;
 
