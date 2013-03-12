@@ -7,7 +7,7 @@
     <% @doc.layers.each do |layer| %>
       <%# TODO: extract to method %>
     <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
-    <option value="<%= clean_layer %>" ><%= clean_layer %></option>
+    <option value="_<%= clean_layer %>" ><%= clean_layer %></option>
     <% end %>
   </select>
 
@@ -125,7 +125,7 @@ var map;
   map.addLayer(wms);
 
   <% @doc.layers.each do |layer| %>
-    <% clean_layer = /\:(.*)/.match(layer.text)[1].to_s %>
+    <% clean_layer = "_" + /\:(.*)/.match(layer.text)[1].to_s %>
     var <%= clean_layer %> = new OpenLayers.Layer.WMS(
       "<%= clean_layer %>",  "<%= SiteConfig.geoserver_url + '/wms' %>",
       { layers: "<%= layer.text %>", transparent: true, format: 'image/gif' },
@@ -139,6 +139,7 @@ var map;
 
   // fix this
   var first =$("#layer-switcher option:first").val();
+  console.log(first);
   var activeLayer = map.getLayersByName(first)[0];
   activeLayer.setVisibility(true);
 
