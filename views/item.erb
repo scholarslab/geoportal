@@ -130,7 +130,7 @@ var map;
     var <%= clean_layer %> = new OpenLayers.Layer.WMS(
       "<%= clean_layer %>",  "<%= SiteConfig.geoserver_url + '/wms' %>",
       { layers: "<%= layer.text %>", transparent: true, format: 'image/gif' },
-      { isBaseLayer: true }
+      { isBaseLayer: false }
     );
 
     map.addLayer(<%= clean_layer %>);
