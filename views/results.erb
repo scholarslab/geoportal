@@ -33,7 +33,7 @@
   <% end %>
 
   <div id="page-nav">
-    <% search_path = "/items?q=#{@search.query}&s=#{@search.start}&c=#{@search.count}&#{@search.search_str}" %>
+    <% search_path = "/items?q=#{@search.query}&s=#{@search.start + 1}&c=#{@search.count}&#{@search.search_str}" %>
     <%= link_to(search_path, 'View more results', :rel => 'prefetch', :id => 'more-link') %>
     </div>
   </div>
