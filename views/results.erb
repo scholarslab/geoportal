@@ -14,12 +14,13 @@
   <div id="results">
     <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 
       <% @item_id = item.xpath('.//id').first.content %>
-    <% @meta = get_item(@meta_url + @item_id) %>
-    <% @meta.extend Geoportal::Result %>
+      <% @meta = get_item(@meta_url + @item_id) %>
+      <% @meta.extend Geoportal::Result %>
     <div class="result">
       <h2>
         <%= link_to("/items/#{@item_id}", @meta.title) %>
       </h2>
+      <p class="abstract"><%= truncate(nl2br(@meta.abstract.text)) %></p>
       <p class="keywords"><strong>Keywords</strong>:
       <% @meta.description.each do |kw| %>
         <span class="keyword"><%= kw.text.strip %></span>

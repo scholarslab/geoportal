@@ -82,6 +82,14 @@ module Geoportal
       )
     end
 
+    def abstract
+      xpath(
+        './/gmd:abstract',
+        'gco' => 'http:// www.isotc211.org/2005/gco namespace',
+        'gmd' => 'http://www.isotc211.org/2005/gmd'
+      )
+    end
+
     def map_link
       xpath(
         './/gmd:CI_OnlineResource/gmd:linkage/gmd:URL[contains(.,"wms")]',

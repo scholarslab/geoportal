@@ -64,7 +64,7 @@
     <h3>WMS Address</h3>
     <p><%= "#{SiteConfig.geoserver_url}/wms" %><p>
     <h3>Layers</h3>
-    <p><%= @doc.layers.to_a.join(',') %></p>
+    <p class="neatlinelayers"><%= @doc.layers.to_a.join(',') %></p>
   </div>
 
 <% end %>
@@ -104,9 +104,9 @@
   });
 
   var wms = new OpenLayers.Layer.WMS(
-  "OpenLayers WMS", 
-  "http://vmap0.tiles.osgeo.org/wms/vmap0?",
-  {layers: 'basic'}
+    "OpenLayers WMS", 
+    "http://vmap0.tiles.osgeo.org/wms/vmap0?",
+    { layers: 'basic' }
   );
   map.addLayer(wms);
 
@@ -126,7 +126,6 @@
 
   // fix this
   var first =$("#layer-switcher option:first").val();
-  console.log(first);
   var activeLayer = map.getLayersByName(first)[0];
   activeLayer.setVisibility(true);
 
@@ -141,7 +140,6 @@
     activeLayer = layer;
 
   });
-
 
 })();
 
