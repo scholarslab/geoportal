@@ -85,6 +85,14 @@
     @include rhythm(1);
   }
 
+  b,strong {
+    font-weight:bold;
+  }
+
+  i,italic {
+    font-style:italic;
+  }
+
   header[role=banner] {
     padding: 1em 1em 0;
 
@@ -164,6 +172,11 @@
         @include adjust-leading-to(1.5);
       }
     }
+  }
+
+  .search-summary {
+    @include adjust-font-size-to(20px);
+    color: #777;
   }
 
   .utils {

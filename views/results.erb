@@ -2,7 +2,7 @@
   <h1>Results</h1>
 
   <% if @search.hits != 0 %>
-    <p>Search for &#8216;<strong><%= unescape(@search.query) %></strong>&#8217;
+    <p class="search-summary">Search for &#8216;<strong><%= unescape(@search.query) %></strong>&#8217;
   returned <span id="hits"><%= @search.hits %></span> results.</p>
 
 <% else %>
