@@ -197,8 +197,13 @@
     padding:2em;
     @include clearfix;
     text-align:center;
+    border-top: 1px solid #ccc;
+    padding-top:2em !important;
   }
 
+  #slab-vcard {
+    @include adjust-leading-to(1);
+  }
   #uvalibrary {
     opacity: 0.4;
     width: 225px;
@@ -282,25 +287,21 @@
   }
 
   footer[role="contentinfo"] {
-    position:absolute;
-    top: 20px;
-    left:0;
-    padding:0;
-    width: 100%;
-
+    text-align:left;
   }
 
   #uvalibrary,
   #scholarslab {
-    margin: 0;
+    position:absolute;
+    top: 20px;
   }
 
   #uvalibrary {
-    float:left;
+    left: 0;
   }
 
   #scholarslab {
-    float:right;
-    margin-right: 30px;
+    right:30px;
   }
+
 }
