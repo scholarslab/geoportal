@@ -83,8 +83,12 @@
 
   p {
     @include rhythm(1);
+    @include adjust-leading-to(1);
   }
 
+  br {
+    line-height: 0.5;
+  }
   b,strong {
     font-weight:bold;
   }
