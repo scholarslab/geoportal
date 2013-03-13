@@ -38,7 +38,7 @@ module Geoportal
       @start = params['s'].to_i
       @start = 1 unless start > 0
       @count = params['c'].to_i
-      @count = 5 unless count > 0
+      @count = 100 unless count > 0
       @end = @start + @count - 1
 
       @query = Rack::Utils.escape(params['q'])
