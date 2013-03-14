@@ -1,11 +1,4 @@
 <div class="utils">
-  <% unless @meta.layers.first.nil? %>
-    <% @layers = @meta.layers.map{|node|/(.*)\:(.*)/.match(node.text)[2]} %>
-    <% workspace = /(.*)\:/.match(@meta.layers.first)[1] %>
-    <% list = @layers.join(',').chomp %>
-      <%= link_to(kml_url2(workspace,list), 'Google Earth', :class => 'kml-link') %>
-  <% end %>
-
   <% unless @meta.catalog_link.nil? %>
     <%= link_to(cat_url(@meta.catalog_link.content), 'Virgo', :class => 'catalog-link') %>
   <% end %>
