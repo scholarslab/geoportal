@@ -38,5 +38,10 @@ end
    task :stop do ; end
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+     run "#{try_sudo} touch /var/cache/mod_pagespeed/cache.flush"
+   end
+
+   task :flush_cache, :roles => :app do
+     run "#{try_sudo} touch /var/cache/mod_pagespeed/cache.flush"
    end
  end
