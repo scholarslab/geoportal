@@ -16,7 +16,7 @@ $(document).ready(function(){
     });
 
     // Change from loading animation to button text after content loads
-    $(docoument).ajaxComplete(function(){
+    $(document).ajaxComplete(function(){
       $(this).html('View more results');
     });
 

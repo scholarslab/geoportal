@@ -25,10 +25,10 @@
 
 // Place any jQuery/helper plugins in here.
 
-//$(document).ready(function(){
-  //$(".ajax").colorbox({
-    //iframe: true,
-    //width: "80%",
-    //height: "80%"
-  //});
-//});
+$(document).ready(function(){
+  $(".ajax").colorbox({
+    iframe: true,
+    width: "80%",
+    height: "80%"
+  });
+});
