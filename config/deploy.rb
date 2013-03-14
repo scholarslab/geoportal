@@ -41,6 +41,7 @@ end
      run "#{try_sudo} touch /var/cache/mod_pagespeed/cache.flush"
    end
 
+   desc 'Flush the mod_pagespeed cache'
    task :flush_cache, :roles => :app do
      run "#{try_sudo} touch /var/cache/mod_pagespeed/cache.flush"
    end
