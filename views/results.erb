@@ -41,30 +41,3 @@
   </div>
 </div>
 
-<% content_for :jsfooter do %>
-
-  <script src="js/vendor/js-url.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    $('a.kml-link').click(function(e){
-        e.preventDefault();
-
-        var url_str = $(this).attr('href');
-        var base_url = url_str.split('?')[0];
-        var layers = url('?layers', url_str);
-
-        $.ajax({
-          url: base_url,
-          async: false,
-          type: 'POST',
-          data: { layers: layers },
-          success: function(returnData) {
-            console.log(returnData);
-            $('body').append("<iframe src='" + returnData + "' style='display:none;'></iframe>");
-          }
-        });
-
-    });
-  });
-</script>
-<% end %>

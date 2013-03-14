@@ -125,7 +125,7 @@
   map.zoomToExtent(bounds);
 
   // fix this
-  var first =$("#layer-switcher option:first").val();
+  var first = $("#layer-switcher option:first").val();
   var activeLayer = map.getLayersByName(first)[0];
   activeLayer.setVisibility(true);
 
@@ -148,7 +148,6 @@
 
 <script src="/js/vendor/jquery.colorbox-min.js"></script>
 <script>
-//todo refactor this
 $(document).ready(function(){$(".ajax").colorbox({iframe:!0,width:"80%",height:"80%"})});
 </script>
 <% end %>
