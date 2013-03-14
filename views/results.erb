@@ -55,8 +55,14 @@
 
         $.ajax({
           url: base_url,
+          async: false,
+          crossDomain: true,
           type: 'POST',
-          data: { layers: layers }
+          data: { layers: layers },
+          success: function(returnData) {
+            console.log(returnData);
+            $('body').append("<iframe src='" + returnData + "' style='display:none;'></iframe>");
+          }
         });
 
     });
