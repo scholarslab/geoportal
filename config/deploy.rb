@@ -22,6 +22,15 @@ after "deploy:setup", "chown_to_gis", "fix_file_permissions"
 after "deploy:update", "chown_to_gis", "fix_file_permissions"
 after "deploy:restart", "deploy:cleanup"
 
+task :production do
+  set :bundle_without, [:development, :test]
+end
+
+task :staging do
+  set :bundle_without, [:test]
+end
+
+
 desc "Change to the proper group"
 task :chown_to_gis, :roles => :app do
   sudo "chgrp -R gis_admins #{deploy_to}"
