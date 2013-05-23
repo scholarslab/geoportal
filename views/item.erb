@@ -20,6 +20,7 @@
       <%= link_to(svg_url(layer.text), 'SVG') %>,
       <%= link_to(shape_url(layer.text), 'Shapefile') %>,
       <%= link_to(jpeg_url(layer.text), 'JPEG', :class => 'ajax') %>,
+      <%= link_to(tif_url(layer.text), 'High Res Image') %>,
       <%= link_to(ol_url(layer.text), 'Web Map', :class => 'cboxElement ajax') %>
     )
     </p>
