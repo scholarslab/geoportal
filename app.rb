@@ -60,6 +60,10 @@ helpers do
     content_url(layers, 'openlayers')
   end
 
+  def shape_url(layers)
+    SiteConfig.geoserver_url + "/ows?service=WFS&request=GetFeature&typeName=#{layers}&maxfeatures=50&outputformat=SHAPE-ZIP"
+  end
+
   def svg_url(layers)
     content_url(layers, 'image/svg+xml')
   end
