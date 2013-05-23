@@ -60,6 +60,10 @@ helpers do
     content_url(layers, 'openlayers')
   end
 
+  def svg_url(layers)
+    content_url(layers, 'image/svg+xml')
+  end
+
   def content_url(layers, format, styles = '')
     SiteConfig.geoserver_url + "/wms/reflect?layers=" + layers + "&format=" + format + "&styles=" + styles + "&width=680&height=480"
   end

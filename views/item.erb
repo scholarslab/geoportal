@@ -17,6 +17,7 @@
       <strong><%= layer.content %></strong> (
       <%= link_to(pdf_url(layer.text), 'PDF') %>,
       <%= link_to(kml_url(layer.text), 'KML') %>,
+      <%= link_to(svg_url(layer.text), 'SVG') %>,
       <%= link_to(jpeg_url(layer.text), 'JPEG', :class => 'ajax') %>,
       <%= link_to(ol_url(layer.text), 'Web Map', :class => 'cboxElement ajax') %>
     )
