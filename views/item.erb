@@ -21,7 +21,9 @@
       <%= link_to(shape_url(layer.text), 'Shapefile') %>,
       <%= link_to(jpeg_url(layer.text), 'JPEG', :class => 'ajax') %>,
       <%= link_to(tif_url(layer.text), 'High Res Image') %>,
-      <%= link_to(ol_url(layer.text), 'Web Map', :class => 'cboxElement ajax') %>
+      <%= link_to(ol_url(layer.text), 'Web Map', :class => 'cboxElement ajax') %>,
+      <%= link_to(wms_url(layer.text), 'WMS') %>,
+      <%= link_to(wfs_url(layer.text), 'WFS') %>
     )
     </p>
   <% end %>

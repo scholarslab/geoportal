@@ -72,6 +72,14 @@ helpers do
     content_url(layers, 'image/tiff', '', 1024, 768);
   end
 
+  def wms_url(layers)
+    SiteConfig.geoserver_url + "/wms?request=getCapabilities&layer=#{layers}"
+  end
+
+  def wfs_url(layers)
+    SiteConfig.geoserver_url + "/#{layers.sub(':', '/')}/wfs?request=GetCapabilities"
+  end
+
   def content_url(layers, format, styles = '', width = 680, height=480)
     SiteConfig.geoserver_url + "/wms/reflect?layers=" + layers + "&format=" + format + "&styles=" + styles + "&width=#{width}&height=#{height}"
   end
