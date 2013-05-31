@@ -69,7 +69,7 @@ helpers do
   end
 
   def tif_url(layers)
-    content_url(layers, 'image/tiff', '', 1024, 768);
+    content_url(layers, 'image/tiff', '', 3000, 3000);
   end
 
   def wms_url(layers)
