@@ -72,7 +72,7 @@
 
   h3 {
     @include adjust-font-size-to(18px);
-    color: #999;
+    color: #777;
     @include leader(1);
     @include trailer(0);
 
