@@ -193,6 +193,19 @@
     }
   }
 
+  .layer-links {
+    color: #aaa;
+    font-size: 1em;
+
+    li {
+      display:inline;
+
+      & + li:before {
+        content: " · ";
+        color: #ccc;
+      }
+    }
+  }
   footer[role=contentinfo] {
     padding:2em;
     @include clearfix;
