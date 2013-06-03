@@ -14,6 +14,10 @@ helpers do
 
   helpers Sinatra::ContentFor
 
+  def has_wfs?(xml)
+    xml.xpath('//gmd:URL[contains(., "wfs")]').first.nil?
+  end
+
   def search_feed(query_string = '')
     rss = "#{gn_url}/rss.search?any=#{query_string}"
     "<a href='#{rss}'>RSS Feed</a>"
