@@ -9,7 +9,7 @@
     <p>No results found.</p>
 <% end %>
 
-  <%= erb :_search_form %>
+<%= erb :_search_form %>
 
   <div id="results">
     <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item| %> 

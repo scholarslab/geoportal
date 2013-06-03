@@ -1,3 +1,4 @@
+
 <div class="content">
   <h1><%= @doc.title %></h1>
 
@@ -18,12 +19,12 @@
         <li><%= link_to(pdf_url(layer.text), 'PDF') %></li>
         <li><%= link_to(kml_url(layer.text), 'KML') %></li>
         <li><%= link_to(svg_url(layer.text), 'SVG') %></li>
-        <li><%= link_to(shape_url(layer.text), 'Shapefile') %></li>
+        <li><%= link_to(shape_url(layer.text), 'Shapefile') unless has_wfs?(@doc) %></li>
         <li><%= link_to(jpeg_url(layer.text), 'JPEG', :class => 'ajax') %></li>
         <li><%= link_to(tif_url(layer.text), 'High Res Image') %></li>
         <li><%= link_to(ol_url(layer.text), 'Web Map', :class => 'cboxElement ajax') %></li>
         <li><%= link_to(wms_url(layer.text), 'WMS') %></li>
-        <li><%= link_to(wfs_url(layer.text), 'WFS') %></li>
+        <li><%= link_to(wfs_url(layer.text), 'WFS') unless has_wfs?(@doc) %></li>
         </ul>
   <% end %>
   </div>
