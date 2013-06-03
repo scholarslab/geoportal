@@ -74,11 +74,11 @@
     @include adjust-font-size-to(18px);
     color: #777;
     @include leader(1);
-    @include trailer(0);
+    @include trailer(0.25);
+  }
 
-    & + * {
-      margin-top:0 !important;
-    }
+  h4 {
+    @include trailer(0.25);
   }
 
   p {
