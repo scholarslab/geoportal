@@ -1176,13 +1176,24 @@ var geoportal = (function() {
 }());
 
 // Place any jQuery/helper plugins in here.
-
+var console = console || {};
 $(document).ready(function(){
-  $(".ajax").colorbox({
+  $(".iframe").colorbox({
     iframe: true,
     width: "80%",
     height: "80%"
   });
+
+  $('.image').colorbox({
+    rel: 'map_layers',
+    width: '90%',
+    height: '90%',
+    iframe: true
+  });
+
+
+
+
 });
 
 /*global $:false, jQuery:false */

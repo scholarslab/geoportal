@@ -57,7 +57,7 @@ helpers do
   end
 
   def jpeg_url(layers)
-    content_url(layers, 'image/jpeg')
+    content_url(layers, 'image/jpeg', '', '1362', '960')
   end
 
   def ol_url(layers)
