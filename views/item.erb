@@ -19,7 +19,9 @@
     <ul class="layer-links">
       <li><%= link_to(pdf_url(layer.text), 'PDF') %></li>
       <li><%= link_to(kml_url(layer.text), 'KML') %></li>
-      <li><%= link_to(svg_url(layer.text), 'SVG') %></li>
+      <% unless has_wfs?(@doc) %>
+        <li><%= link_to(svg_url(layer.text), 'SVG') %></li>
+      <% end %>
       <li><%= link_to(jpeg_url(layer.text), 'JPEG', :title => layer.content, :class => 'image cboxElement') %></li>
       <li><%= link_to(tif_url(layer.text), 'High Res Image') %></li>
       <li><%= link_to(wms_url(layer.text), 'WMS') %></li>
