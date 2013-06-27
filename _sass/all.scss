@@ -98,15 +98,11 @@
   }
 
   header[role=banner] {
-    padding: 1em 1em 0;
-
-    hgroup {
-      position:relative;
-    }
-
+    padding: 0 1em;
     h1 {
       @include adjust-font-size-to(32px);
-      @include adjust-leading-to(1.5);
+      @include adjust-leading-to(2, 32px);
+      margin:0;
     }
 
   }
@@ -266,22 +262,7 @@
 
   body {
     margin: 0 40px;
-    position:relative;
-  }
-
-  header[role=banner] {
-    padding: 100px 2em 20px;
-    @include clearfix;
-
-    h1 {
-      @include adjust-font-size-to(46px);
-      @include adjust-leading-to(1);
-    }
-
-  }
-
-  .content {
-    padding: 20px 2em;
+    padding-top: 60px;
   }
 
   #search {
@@ -297,24 +278,33 @@
 
   .introduction {
     @include adjust-font-size-to(18px);
+    margin-top:0;
   }
 
   footer[role="contentinfo"] {
     text-align:left;
   }
 
-  #uvalibrary,
-  #scholarslab {
-    position:absolute;
-    top: 20px;
+  #global-footer {
+    background: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5em;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    #scholarslab,
+    #uvalibrary {
+      display:inline;
+      margin:0;
+      float:right;
+    }
+
+    #uvalibrary {
+      float:left;
+    }
   }
 
-  #uvalibrary {
-    left: 0;
-  }
 
-  #scholarslab {
-    right:30px;
-  }
 
 }
