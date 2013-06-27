@@ -63,21 +63,30 @@
     font-weight: bold;
     @include adjust-font-size-to(28px);
     @include adjust-leading-to(1, 28px);
+    @include trailer(1, 28px);
   }
 
   h2 {
     @include adjust-font-size-to(24px);
     @include adjust-leading-to(1, 24px);
     @include leader(1, 24px);
-    @include trailer(1,24px);
+    @include padding-trailer(0.25, 24px);
+    margin-bottom:0;
     border-bottom: 1px dotted #ccc;
+
+    & + * {
+      margin-top:0 !important;
+      padding-top: rhythm(0.25) !important;
+    }
   }
 
   h3 {
     @include adjust-font-size-to(18px);
     color: #777;
-    @include leader(1);
-    @include trailer(0.25);
+    @include leader(1, 18px);
+    & + * {
+      margin-top:0 !important;
+    }
   }
 
   h4 {
@@ -345,7 +354,6 @@
 
   footer[role="contentinfo"] {
     clear:both;
-    margin-top: rhythm(1);
     @include clearfix;
     text-align:left;
 
