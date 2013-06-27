@@ -20,7 +20,7 @@
         <h2>
           <%= link_to("/items/#{@item_id}", @meta.title) %>
         </h2>
-        <p class="abstract"><%= truncate(nl2br(@meta.abstract.text)) %></p>
+        <p class="abstract"><%= Nokogiri.HTML(truncate(@meta.abstract.text)) %></p>
         <p class="keywords"><strong>Keywords</strong>:
           <% @meta.description.each do |kw| %>
             <% search_string = "/items?q=#{kw.content.strip}&s=1&c=25&dt=3000" %>

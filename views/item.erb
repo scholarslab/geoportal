@@ -40,7 +40,7 @@
 
   <div id="abstract">
     <h2>Abstract</h2>
-    <p><%= nl2br(@doc.abstract) %></p>
+    <%= Nokogiri::HTML(@doc.abstract) %>
   </div>
 
   <div id="categories">
