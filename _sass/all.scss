@@ -207,12 +207,41 @@
     @include clearfix;
     text-align:center;
     border-top: 1px solid #ccc;
-    padding-top:2em !important;
+
+    p,.vcard {
+      @include adjust-font-size-to(14px);
+      @include adjust-leading-to(0.8, 14px);
+      color: #777;
+      margin:0;
+    }
   }
 
-  #slab-vcard {
-    @include adjust-leading-to(1);
+  #social-media {
+    p {
+      margin: rhythm(1, 14px) 0 rhythm(0.5, 14px);
+      color: #999;
+    }
+
+    a:link,
+    a:visited {
+      img {
+        opacity: 0.5;
+      }
+    }
+    a:hover,
+    a:focus {
+      img {
+        opacity: 0.7;
+      }
+    }
+    a:active {
+      img {
+        opacity: 0.9;
+      }
+    }
   }
+
+
   #uvalibrary {
     opacity: 0.4;
     width: 225px;
@@ -283,6 +312,14 @@
 
   footer[role="contentinfo"] {
     text-align:left;
+
+    .vcard {
+      @include span-columns(6, 12);
+    }
+    #social-media {
+      @include span-columns(6 omega, 12);
+      text-align:right;
+    }
   }
 
   #global-footer {
@@ -290,18 +327,19 @@
     border-bottom: 1px solid #ddd;
     padding: 0.5em;
     position:fixed;
-    top:0;
+    top:5px;
     left:0;
     width: 100%;
     #scholarslab,
     #uvalibrary {
       display:inline;
       margin:0;
-      float:right;
+      float:left;
     }
 
-    #uvalibrary {
-      float:left;
+    #scholarslab {
+      float:right;
+      width: 120px;
     }
   }
 
