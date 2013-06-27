@@ -61,12 +61,15 @@
 
   h1 {
     font-weight: bold;
-    @include adjust-font-size-to(36px);
+    @include adjust-font-size-to(28px);
+    @include adjust-leading-to(1, 28px);
   }
 
   h2 {
     @include adjust-font-size-to(24px);
-    @include leader(1);
+    @include adjust-leading-to(1, 24px);
+    @include leader(1, 24px);
+    @include trailer(1,24px);
     border-bottom: 1px dotted #ccc;
   }
 
@@ -158,18 +161,25 @@
   #results {
     clear:both;
     .result {
-      padding: 0 0 rhythm(1) 0;
-      border-top: 1px dotted #ccc;
+      & + .result{
+        border-top: 1px dotted #ccc;
+      }
+
+      .abstract {
+        margin-top:0;
+        br {
+          display:none;
+        }
+      }
 
       h2 {
-        margin-top:0;
         border:none;
       }
 
       .keywords {
         color: #777;
         @include adjust-font-size-to(14px);
-        @include adjust-leading-to(1.5);
+        @include adjust-leading-to(1, 14px);
       }
     }
   }
@@ -191,8 +201,9 @@
 
   .layer-links {
     color: #aaa;
-    font-size: 1em;
-
+    @include adjust-font-size-to(14px);
+    @include adjust-leading-to(1,14px);
+    margin:0;
     li {
       display:inline;
 
@@ -310,7 +321,24 @@
     margin-top:0;
   }
 
+  #layers {
+    float:right;
+    width: 48%;
+    margin-bottom: rhythm(1);
+  }
+
+  #abstract,
+  #categories,
+  #keywords,
+  #arcgis_connection,
+  #neatline_connection {
+    margin-right: 52%;
+  }
+
   footer[role="contentinfo"] {
+    clear:both;
+    margin-top: rhythm(1);
+    @include clearfix;
     text-align:left;
 
     .vcard {

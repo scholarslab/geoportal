@@ -27,7 +27,6 @@
       <li><%= link_to(wms_url(layer.text), 'WMS') %></li>
     </ul>
     <% unless has_wfs?(@doc) %>
-      <br/>
     <ul class="layer-links">
       <li>Vector</li>
       <li><%= link_to(wfs_url(layer.text), 'WFS') %></li>
