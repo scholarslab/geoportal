@@ -4,40 +4,35 @@
   <% if @search.hits != 0 %>
     <p class="search-summary">Search for &#8216;<strong><%= unescape(@search.query) %></strong>&#8217;
   returned <span id="hits"><%= @search.hits %></span> results.</p>
-  <% else %>
+<% else %>
     <p>No results found.</p>
-  <% end %>
+<% end %>
 
-<%= erb :_search_form %>
-<div id="results">
-  <% @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)].each do |item|%> 
+  <%= erb :_search_form %>
+  <div id="results">
+    <% results = @doc.xpath('.//metadata')[(@search.start - 1)..(@search.end - 1)] || [] %>
+    <% results.each do |item|  %> 
       <% @item_id = item.xpath('.//id').first.content %>
       <% @meta = get_item(@meta_url + @item_id) %>
       <% @meta.extend Geoportal::Result %>
       <% unless @meta.title.nil? %>
-    <div class="result">
-      <h2>
-        <%= link_to("/items/#{@item_id}", @meta.title) %>
-      </h2>
-      <p class="abstract"><%= truncate(nl2br(@meta.abstract.text)) %></p>
-      <p class="keywords"><strong>Keywords</strong>:
-      <% @meta.description.each do |kw| %>
-        <% search_string = "/items?q=#{kw.content.strip}&s=1&c=25&dt=3000" %>
-        <span class="keyword"><%= link_to(search_string, kw.text.strip) %></span>
-      <% end %>
-      </p>
-
-      <% unless @meta.map_link.nil? %>
-        <%= erb :_utils %>
+        <div class="result">
+        <h2>
+          <%= link_to("/items/#{@item_id}", @meta.title) %>
+        </h2>
+        <p class="abstract"><%= truncate(nl2br(@meta.abstract.text)) %></p>
+        <p class="keywords"><strong>Keywords</strong>:
+          <% @meta.description.each do |kw| %>
+            <% search_string = "/items?q=#{kw.content.strip}&s=1&c=25&dt=3000" %>
+            <span class="keyword"><%= link_to(search_string, kw.text.strip) %></span>
+          <% end %>
+        </p>
+        <% unless @meta.map_link.nil? %>
+          <%= erb :_utils %>
+        <% end %>
+        </div>
     <% end %>
-  </div>
-<% end %>
   <% end %>
-
-  <div id="page-nav">
-    <% search_path = "/items?q=#{@search.query}&s=#{@search.start}&c=#{@search.count}&#{@search.search_str}" %>
-    <%= link_to(search_path, 'View more results', :rel => 'prefetch', :id => 'more-link') %>
-    </div>
   </div>
 </div>
 
