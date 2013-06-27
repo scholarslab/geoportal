@@ -2,14 +2,16 @@
 <div class="content">
   <h1><%= @doc.title %></h1>
 
+  <div id="item_map"></div>
+  <div id="layer-switcher-div">
+    <label for="layer-switcher">Switch map layer</label>
   <select id="layer-switcher">
     <% @doc.layers.each do |layer| %>
       <% clean_layer = clean_layer(layer) %>
     <option value="<%= layer2variable(clean_layer) %>"><%= clean_layer %></option>
   <% end %>
   </select>
-
-  <div id="item_map"></div>
+  </div>
 
   <div id="layers">
     <h2>Individual Layers</h2>
