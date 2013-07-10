@@ -1114,11 +1114,17 @@ var geoportal = (function() {
 
           ll.transform(map.getProjectionObject(), target_projection);
           ur.transform(map.getProjectionObject(), target_projection);
+
           // inject values to search form
           $('#ll-lon').val(ll.lon.toFixed(4));
           $('#ll-lat').val(ll.lat.toFixed(4));
           $('#ur-lon').val(ur.lon.toFixed(4));
           $('#ur-lat').val(ur.lat.toFixed(4));
+
+          //console.log('ll.lon', ll.lon.toFixed(4));
+          //console.log('ll.lat', ll.lat.toFixed(4));
+          //console.log('ur.lon', ur.lon.toFixed(4));
+          //console.log('ur.lat', ur.lat.toFixed(4));
 
           bounds = new OpenLayers.Bounds(sw.lon, sw.lat, ne.lon, ne.lat);
 
