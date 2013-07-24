@@ -3,9 +3,9 @@
 
   <% if @search.hits != 0 %>
     <p class="search-summary">Search for &#8216;<strong><%= unescape(@search.query) %></strong>&#8217;
-  returned <span id="hits"><%= @search.hits %></span> results.</p>
+  returned <span id="hits"><%= @search.hits %></span> result(s).</p>
 <% else %>
-    <p>No results found.</p>
+    <p class="search-summary">Search for &#8216;<strong><%= unescape(@search.query) %></strong>&#8217; returned no results.</p>
 <% end %>
 
   <%= erb :_search_form %>
