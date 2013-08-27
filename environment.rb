@@ -7,10 +7,10 @@ configure do
   SiteConfig = OpenStruct.new(
     :title => 'UVA Library Geoportal',
     :description => '',
-    :geonetwork_url => 'http://libsvr35.lib.virginia.edu',
+    :geonetwork_url => 'http://gis.lib.virginia.edu',
     :geonetwork_port => ':8080',
     :geonetwork_mount => 'geonetwork',
-    :geoserver_url => 'http://libsvr35.lib.virginia.edu:8080/geoserver',
+    :geoserver_url => 'http://gis.lib.virginia.edu:8080/geoserver',
     :library_catalog => 'http://search.lib.virginia.edu/catalog/'
   )
 
