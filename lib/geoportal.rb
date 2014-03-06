@@ -150,13 +150,12 @@ module Geoportal
       xpath('.//gmd:onLine/gmd:CI_OnlineResource[contains(./gmd:protocol/gco:CharacterString,"get-map") or contains(./gmd:protocol/gco:CharacterString,"WFS")]')
     end
 
-
     def download
       xpath('.//gmd:onLine/gmd:CI_OnlineResource[contains(./gmd:protocol/gco:CharacterString,"download")]')
     end
 
     def layers
-      xpath('.//gmd:onLine/gmd:CI_OnlineResource[contains(./gmd:protocol/gco:CharacterString,"get-map")]/gmd:name/gco:CharacterString')
+      xpath('.//gmd:onLine/gmd:CI_OnlineResource[contains(./gmd:protocol/gco:CharacterString,"WMS-1.1.1-http-get-capabilities")]/gmd:name/gco:CharacterString')
     end
 
     def abstract
