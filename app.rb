@@ -142,7 +142,6 @@ get '/items/?' do
   @page_title = "Search Results"
   @search = Geoportal::Search.new(params, gn_url)
   @doc = @search.find()
-
   @search.hits = @doc.xpath('.//metadata').length
 
   if(@search.hits < @search.end)

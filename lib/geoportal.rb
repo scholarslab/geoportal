@@ -27,7 +27,7 @@ module Geoportal
     @connection ||= self.connect
   end
 
-  
+
 
   class Search
 
@@ -156,7 +156,7 @@ module Geoportal
     end
 
     def layers
-      xpath('.//gmd:onLine/gmd:CI_OnlineResource[contains(./gmd:protocol/gco:CharacterString,"WMS-1.1.1-http-get-capabilities")]/gmd:name/gco:CharacterString')
+      xpath('.//gmd:onLine/gmd:CI_OnlineResource[contains(./gmd:protocol/gco:CharacterString,"get-map")]/gmd:name/gco:CharacterString')
     end
 
     def abstract
@@ -183,7 +183,7 @@ module Geoportal
       xpath('.//gmd:CI_OnlineResource')
     end
 
-  end	
+  end
 
   module Link
 
@@ -199,6 +199,6 @@ module Geoportal
       xpath('.//gmd:description/gco:CharacterString').first.content
     end
 
-  end 
+  end
 
 end

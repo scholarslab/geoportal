@@ -108,24 +108,23 @@
   var map = new OpenLayers.Map('item_map', {
     projection: new OpenLayers.Projection("EPSG:4326"),
     displayProjection: new OpenLayers.Projection("EPSG:4326"),
-    maxExtent: bounds,
-    restrictedExtent: bounds,
     maxResolution: 'auto',
     controls: [
       new OpenLayers.Control.Attribution(),
       new OpenLayers.Control.Navigation(),
       new OpenLayers.Control.PanZoomBar(),
       new OpenLayers.Control.ScaleLine(),
-      new OpenLayers.Control.MousePosition()
+      new OpenLayers.Control.MousePosition(),
+      new OpenLayers.Control.LayerSwitcher()
     ]
   });
 
-  var wms = new OpenLayers.Layer.WMS(
-    "OpenLayers WMS", 
-    "http://vmap0.tiles.osgeo.org/wms/vmap0?",
+  var wms = new OpenLayers.Layer.WMS("OpenLayers WMS", 
+    "http://vmap0.tiles.osgeo.org/wms/vmap0",
     { layers: 'basic' }
   );
   map.addLayer(wms);
+  map.zoomToMaxExtent();
 
   <% @doc.layers.each do |layer| %>
     <% clean_layer = layer2variable(clean_layer(layer))%>
