@@ -51,8 +51,8 @@
     <p>
     <% @doc.categories.each do |category| %>
       <% search_string = "/items?q=#{category.content}&s=1&c=25&dt=3000" %>
-    <%= link_to(search_string, category.content) %>
-  <% end %>
+      <%= link_to(search_string, category.content) %>
+    <% end %>
     </p>
   </div>
 
@@ -61,8 +61,8 @@
     <p>
     <% @doc.keywords.each do |keyword| %>
       <% search_string = "/items?q=#{keyword.content}&s=1&c=25&dt=3000" %>
-    <%= link_to(search_string, keyword.content) %>
-  <% end %>
+      <%= link_to(search_string, keyword.content) %>
+    <% end %>
     </p>
   </div>
 
