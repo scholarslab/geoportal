@@ -2,6 +2,8 @@
 
 [![Build
 Status](https://secure.travis-ci.org/scholarslab/geoportal.png)](http://travis-ci.org/scholarslab/geoportal)
+[![Code
+Climate](https://codeclimate.com/github/scholarslab/geoportal.png)](https://codeclimate.com/github/scholarslab/geoportal)
 
 ## Getting Started
 
