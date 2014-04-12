@@ -2,9 +2,9 @@
 source "https://rubygems.org"
 #ruby "1.9.3"
 
-gem "sinatra", "~>1.3.5"
-gem "sinatra-contrib", "~>1.3.2"
-gem "foreman", "0.62"
+gem "sinatra", "~>1.4.5"
+gem "sinatra-contrib", "~>1.4.2"
+gem "foreman", "~> 0.62"
 #gem "rgeoserver"
 #gem "dotenv"
 
@@ -20,7 +20,7 @@ group :development do
 
   # deployment
   gem "capistrano"
-  gem "capistrano-multistage"
+  #gem "capistrano-multistage"
 
   # guard stuff
   gem 'guard'
